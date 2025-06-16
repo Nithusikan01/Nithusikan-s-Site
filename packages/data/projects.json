@@ -13,7 +13,7 @@
     "image": "./packages/images/hydropoics.jpg",
     "duration": "2023 September - 2024 January",
     "link": "https://projects.ce.pdn.ac.lk/3yp/e19/Automated-Hydroponic-System/",
-    "linkText": "Source"
+    "linkText": "GitHub"
   },
   {
     "title": "SkyMart Online Shoping Store",
@@ -21,7 +21,7 @@
     "image": "./packages/images/skyMart.png",
     "duration": "2023 March - 2023 June",
     "link": "https://github.com/cepdnaclk/e19-co226-Online-Grocery-Shop",
-    "linkText": "Source"
+    "linkText": "GitHub"
   },
   {
     "title": "Student Attendance Management System",
@@ -29,7 +29,7 @@
     "image": "./packages/images/ATTENDANCE.png",
     "duration": "2023 March - 2023 June",
     "link": "https://projects.ce.pdn.ac.lk/co225/e19/school-attendance-management-system/",
-    "linkText": "Source"
+    "linkText": "GitHub"
   },
   {
     "title": "Engineering Education Unit WebApplication",
@@ -37,6 +37,38 @@
     "image": "./packages/images/Home page.png",
     "duration": "2023 March - 2023 June",
     "link": "https://projects.ce.pdn.ac.lk/co227/e19/Engineering-Education-Unit/",
-    "linkText": "Source"
+    "linkText": "GitHub"
+  },
+  {
+    "title": "Cross-Layer Cyberattack Detection Framework",
+    "description": "An end-to-end pipeline to detect known and unknown cyberattacks by analyzing network traffic and identifying affected components from application-layer logs.",
+    "image": "./packages/images/cyberattack.jpg",
+    "duration": "2025 March - Present",
+    "link": "https://github.com/cepdnaclk/e19-4yp-Predicting-Cybersecurity-Attacks-Using-Compound-Analysis-with-Classification-Algorithms",
+    "linkText": "GitHub"
+  },
+  {
+    "title": "ML-Based Inpatient Bed Demand Forecasting",
+    "description": "A machine learning application for forecasting inpatient bed demand to improve hospital resource allocation and patient satisfaction.",
+    "image": "./packages/images/bedforecast.jpg",
+    "duration": "2023 November - 2024 April",
+    "link": "https://github.com/Nithusikan01/ML-Based-Bed-Demand-Forecasting",
+    "linkText": "GitHub"
+  },
+  {
+    "title": "Vehicle Number Plate Recognition System",
+    "description": "A real-time application using YOLOv8 and EasyOCR for automatic vehicle detection and license plate recognition.",
+    "image": "./packages/images/numberplate.jpg",
+    "duration": "2024 April - Present",
+    "link": "https://github.com/Nithusikan01/Vehicle-Number-Plate-Recognition-System.git",
+    "linkText": "GitHub"
+  },
+  {
+    "title": "Customer Support Chatbot with LLaMA-3",
+    "description": "An intelligent customer support chatbot using fine-tuned LLaMA-3 and Retrieval-Augmented Generation (RAG) for enhanced conversational support.",
+    "image": "./packages/images/chatbot.jpg",
+    "duration": "2024 April - Present",
+    "link": "https://github.com/Nithusikan01/Customer-Support-Chat-Bot-using-LLAMA-3.git",
+    "linkText": "GitHub"
   }
 ]
