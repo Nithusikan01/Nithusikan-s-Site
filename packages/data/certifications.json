@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Python for Everybody",
+    "year": "2021",
+    "image": "packages/images/python for everybody.png",
+    "description": "A beginner-friendly course by Dr. Chuck introducing Python programming from scratch.",
+    "link": "https://coursera.org/share/3403ef63f9228cc0ed273054ddb77da4"
+  },
+  {
+    "title": "Introduction to Java",
+    "year": "2023",
+    "image": "packages/images/Intro to Java.png",
+    "description": "Covers Java syntax, object-oriented concepts, and basic app development.",
+    "link": "https://coursera.org/share/f7ad54eccd0286f3442149ba59a758bc"
+  },
+  {
+    "title": "Supervised Machine Learning",
+    "year": "2023",
+    "image": "packages/images/supervised ML.png",
+    "description": "Regression and classification techniques for predictive modeling.",
+    "link": "https://coursera.org/share/17a2e1d51beb1615865585e0e7ce1e03"
+  },
+  {
+    "title": "Advanced Learning Algorithms",
+    "year": "2023 March",
+    "image": "packages/images/Advanced Learning Algorithms.png",
+    "description": "Covers clustering, dimensionality reduction, and deep learning with Andrew Ng.",
+    "link": "https://coursera.org/share/b065503eb78a31bbc42b0b677d9475d1"
+  }
+]

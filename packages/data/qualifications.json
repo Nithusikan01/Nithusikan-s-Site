@@ -1,0 +1,27 @@
+[
+  {
+    "title": "GCE Ordinary Level",
+    "subtitle": "Jaffna Hindu College<br>9A",
+    "date": "2016",
+    "direction": "right"
+  },
+  {
+    "title": "GCE Advance Level",
+    "subtitle": "Jaffna Hindu College<br>3A",
+    "date": "2017 January - 2019 August",
+    "direction": "left"
+  },
+  {
+    "title": "Diploma in English",
+    "subtitle": "British College, Kilinochchi",
+    "date": "2020",
+    "direction": "right"
+  },
+  {
+    "title": "Engineering Undergraduate",
+    "subtitle": "University of Peradeniya<br>Current GPA: 3.50",
+    "date": "2021 March - Present",
+    "direction": "left",
+    "final": true 
+  }
+]

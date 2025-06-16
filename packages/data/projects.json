@@ -1,0 +1,42 @@
+[
+  {
+    "title": "8-bit Single Cycle Processor",
+    "description": "An 8-bit single cycle CPU with associated memory hierarchy. The processor includes an ALU, register files, control logic, forwarding unit, data memory, data cache, instruction memory and instruction cache.",
+    "image": "./packages/images/processor.jpg",
+    "duration": "2023 March - 2023 June",
+    "link": "#",
+    "linkText": "GitHub"
+  },
+  {
+    "title": "Automated-Hydroponic-System",
+    "description": "The project 'IoT-Based Automated Hydroponic System' aims to develop a modern and sustainable approach to hydroponic farming that maximizes efficiency by using technology to monitor and control growth conditions, reducing resource consumption, and enabling users to make data-driven decisions for better crop management.",
+    "image": "./packages/images/hydropoics.jpg",
+    "duration": "2023 September - 2024 January",
+    "link": "https://projects.ce.pdn.ac.lk/3yp/e19/Automated-Hydroponic-System/",
+    "linkText": "Source"
+  },
+  {
+    "title": "SkyMart Online Shoping Store",
+    "description": "The SkyMart Online Shoping Store is a robust and user-friendly solution designed to enhance the onlie Shoping efficiency and improve the overall user experience.",
+    "image": "./packages/images/skyMart.png",
+    "duration": "2023 March - 2023 June",
+    "link": "https://github.com/cepdnaclk/e19-co226-Online-Grocery-Shop",
+    "linkText": "Source"
+  },
+  {
+    "title": "Student Attendance Management System",
+    "description": "The Student Attendance Management System is a versatile and user-centric platform that enhances the school's attendance tracking and communication processes.",
+    "image": "./packages/images/ATTENDANCE.png",
+    "duration": "2023 March - 2023 June",
+    "link": "https://projects.ce.pdn.ac.lk/co225/e19/school-attendance-management-system/",
+    "linkText": "Source"
+  },
+  {
+    "title": "Engineering Education Unit WebApplication",
+    "description": "A state-of-the-art web application that combines robust security features with a responsive user interface and an exceptionally user-friendly admin page.",
+    "image": "./packages/images/Home page.png",
+    "duration": "2023 March - 2023 June",
+    "link": "https://projects.ce.pdn.ac.lk/co227/e19/Engineering-Education-Unit/",
+    "linkText": "Source"
+  }
+]
