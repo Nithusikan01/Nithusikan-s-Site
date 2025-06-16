@@ -309,3 +309,19 @@ fetch("packages/data/qualifications.json")
     });
   })
   .catch((err) => console.error("Failed to load qualifications:", err));
+
+// Certifications Swiper
+var certificationsSwiper = new Swiper(".certifications-swiper", {
+    cssMode: true,
+    loop: true,
+    navigation: {
+        nextEl: ".certifications-button-next",
+        prevEl: ".certifications-button-prev",
+    },
+    pagination: {
+        el: ".certifications-pagination",
+        clickable: true,
+    },
+    mousewheel: true,
+    keyboard: true,
+});
