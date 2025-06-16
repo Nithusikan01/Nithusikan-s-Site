@@ -105,6 +105,24 @@ function initPortfolioSwiper() {
   });
 }
 
+/*==================== CERTIFICATIONS SWIPER  ====================*/
+let swiperCertification; // declare globally so we can re-init if needed
+function initCertificationsSwiper() {
+  if (swiperCertification) swiperCertification.destroy(true, true);
+  swiperCertification = new Swiper(".certification__container", {
+    cssMode: true,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+}
+
 /*==================== TESTIMONIAL ====================*/
 let swiperTestimonial = new Swiper(".testimonial__container", {
   loop: true,
@@ -232,15 +250,14 @@ fetch("packages/data/projects.json")
 
 /*==================== LOAD CERTIFICATIONS FROM JSON ====================*/
 fetch("packages/data/certifications.json")
-  .then((res) => res.json())
+  .then((response) => response.json())
   .then((certifications) => {
-    const container = document.getElementById("certification-container");
-    container.innerHTML = ""; // Clear any static content
+    const container = document.getElementById("certification-wrapper");
+    container.innerHTML = ""; // Clear existing static content if any
 
     certifications.forEach((cert) => {
       const slide = document.createElement("div");
-      slide.className = "portfolio__content grid swiper-slide";
-
+      slide.className = "portfolio__content grid swiper-slide"; // Keep consistent styling
       slide.innerHTML = `
         <img src="${cert.image}" alt="${cert.title}" class="portfolio__img" />
 
@@ -252,8 +269,8 @@ fetch("packages/data/certifications.json")
             ${cert.year}
           </div>
           <br />
-          <a href="${cert.link}" class="button button--flex button--small portfolio__button" target="_blank">
-            Credential
+          <a href="${cert.link}" class="button button--flex button--small portfolio__button" target="_blank" rel="noopener noreferrer">
+            View Certificate
             <i class="uil uil-arrow-right button__icon"></i>
           </a>
         </div>
@@ -261,13 +278,13 @@ fetch("packages/data/certifications.json")
       container.appendChild(slide);
     });
 
-    // Initialize Swiper for certifications separately if needed
-    // Assuming certifications share the same swiper container class:
-    initPortfolioSwiper();
+    // Initialize swiper for certifications if needed
+    if (typeof initCertificationsSwiper === "function") {
+      initCertificationsSwiper();
+    }
   })
-  .catch((error) => {
-    console.error("Error loading certifications:", error);
-  });
+  .catch((err) => console.error("Failed to load certifications.json:", err));
+
 
 /*==================== LOAD QUALIFICATIONS FROM JSON ====================*/
 fetch("packages/data/qualifications.json")
