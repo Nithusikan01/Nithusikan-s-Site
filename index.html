@@ -126,11 +126,11 @@
     <section class="container hero" id="home" aria-labelledby="hero-title">
       <div class="hero__row">
         <div class="hero__copy">
-          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Open to AI / ML Engineer roles · Available within 2 weeks</p>
-          <p class="eyebrow mono">AI / ML Engineer</p>
-          <h1 class="hero__title" id="hero-title">I build LLM, RAG and agentic AI systems that run in production.</h1>
-          <p class="hero__intro">From RAG assistants deployed on AWS to generative AI features running in healthcare software today. I care about measurable quality: evaluation, reliability, and getting models out of notebooks and into production.</p>
-          <div class="hero__actions">
+          <p class="badge hero-in" style="--d: 0ms"><span class="badge__dot" aria-hidden="true"></span>Open to AI / ML Engineer roles · Available within 2 weeks</p>
+          <p class="eyebrow mono hero-in" style="--d: 140ms">AI / ML Engineer</p>
+          <h1 class="hero__title hero-in" style="--d: 280ms" id="hero-title">I build LLM, RAG and agentic AI systems that run in production.</h1>
+          <p class="hero__intro hero-in" style="--d: 440ms">From RAG assistants deployed on AWS to generative AI features running in healthcare software today. I care about measurable quality: evaluation, reliability, and getting models out of notebooks and into production.</p>
+          <div class="hero__actions hero-in" style="--d: 580ms">
             <a href="#projects" class="btn btn--primary">View projects
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
             <a href="./packages/pdf/Nithusikan_Thasavaran_CV.pdf" class="btn btn--ghost" download>Download CV</a>
@@ -138,7 +138,7 @@
           </div>
         </div>
 
-        <aside class="card profile" aria-label="Profile summary">
+        <aside class="card profile hero-in" style="--d: 520ms" aria-label="Profile summary">
           <div class="profile__head">
             <img src="./packages/images/profile/headshot.webp" alt="Portrait of Nithusikan Thasavaran"
                  class="profile__img" width="600" height="600" fetchpriority="high">
@@ -164,16 +164,16 @@
       </div>
 
       <!-- Signature panel: rendered from projects.json (Anamnesis pipeline) -->
-      <figure class="card pipeline" id="pipeline" aria-label="Anamnesis retrieval pipeline" hidden></figure>
+      <figure class="card pipeline hero-in" style="--d: 760ms" id="pipeline" aria-label="Anamnesis retrieval pipeline" hidden></figure>
     </section>
 
     <!--==================== HIGHLIGHTS ====================-->
     <section class="container" aria-label="Highlights">
-      <ul class="stats">
-        <li><p class="stats__value mono">1+ yr</p><p class="stats__label">industry experience</p></li>
-        <li><p class="stats__value mono">2</p><p class="stats__label">AI features in production</p></li>
-        <li><p class="stats__value mono">10+</p><p class="stats__label">projects built</p></li>
-        <li><p class="stats__value mono">97%</p><p class="stats__label">accuracy on 12M+ flow records</p></li>
+      <ul class="stats reveal">
+        <li><p class="stats__value mono" data-count>1+ yr</p><p class="stats__label">industry experience</p></li>
+        <li><p class="stats__value mono" data-count>2</p><p class="stats__label">AI features in production</p></li>
+        <li><p class="stats__value mono" data-count>10+</p><p class="stats__label">projects built</p></li>
+        <li><p class="stats__value mono" data-count>97%</p><p class="stats__label">accuracy on 12M+ flow records</p></li>
       </ul>
     </section>
 

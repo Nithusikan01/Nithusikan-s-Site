@@ -66,7 +66,65 @@ const revealObserver =
 
 function observeReveal(root = document) {
   $$(".reveal:not(.is-visible)", root).forEach((el) => {
+    // Stagger siblings (cards in a grid, list rows) so they cascade in
+    const siblings = el.parentElement ? $$(":scope > .reveal", el.parentElement) : [];
+    el.style.setProperty("--i", Math.min(siblings.indexOf(el), 8));
     if (revealObserver) revealObserver.observe(el);
+    else el.classList.add("is-visible");
+  });
+  observeMotion(root);
+}
+
+/*==================== MOTION: COUNT-UP, CHART BARS, PIPELINE PULSE ====================*/
+// Animates "0.94", "+41 pts", "6,665", "1+ yr", "97%" up from zero, ending on the exact original text
+function countUp(el) {
+  const original = el.textContent;
+  const m = original.match(/^([^\d]*)(\d[\d,]*(?:\.\d+)?)(.*)$/);
+  if (!m || reducedMotion) return;
+  const [, prefix, num, suffix] = m;
+  const target = parseFloat(num.replace(/,/g, ""));
+  const decimals = (num.split(".")[1] || "").length;
+  const grouped = num.includes(",");
+  const duration = 2000;
+  const start = performance.now();
+  const format = (v) =>
+    grouped ? v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : v.toFixed(decimals);
+  const tick = (now) => {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = prefix + format(target * eased) + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = original;
+  };
+  requestAnimationFrame(tick);
+}
+
+const motionObserver =
+  !reducedMotion && "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const el = entry.target;
+            if (el.classList.contains("pipeline")) {
+              // The pulse only runs while the panel is on screen
+              el.classList.toggle("is-running", entry.isIntersecting);
+              return;
+            }
+            if (!entry.isIntersecting) return;
+            if (el.hasAttribute("data-count")) countUp(el);
+            else el.classList.add("is-visible");
+            motionObserver.unobserve(el);
+          });
+        },
+        { threshold: 0.3 }
+      )
+    : null;
+
+function observeMotion(root = document) {
+  const targets = $$("[data-count]:not([data-observed]), .chart:not([data-observed]), .pipeline:not([data-observed])", root);
+  targets.forEach((el) => {
+    el.setAttribute("data-observed", "");
+    if (motionObserver) motionObserver.observe(el);
     else el.classList.add("is-visible");
   });
 }
@@ -134,7 +192,7 @@ function renderPipeline(p) {
       ${p.pipeline
         .map(
           (s, i) => `
-        <li class="step${s.highlight ? " step--hi" : ""}">
+        <li class="step${s.highlight ? " step--hi" : ""}" style="--i: ${i}">
           <p class="step__n">0${i + 1} · ${escapeHTML(s.stage)}</p>
           <p class="step__label">${escapeHTML(s.label)}</p>
         </li>`
@@ -143,7 +201,7 @@ function renderPipeline(p) {
     </ol>
     <ul class="metric-strip">
       ${(p.pipelineMetrics || [])
-        .map((m) => `<li><p class="metric-strip__value">${escapeHTML(m.value)}</p><p class="metric-strip__label">${escapeHTML(m.label)}</p></li>`)
+        .map((m) => `<li><p class="metric-strip__value" data-count>${escapeHTML(m.value)}</p><p class="metric-strip__label">${escapeHTML(m.label)}</p></li>`)
         .join("")}
     </ul>`;
   fig.hidden = false;
@@ -163,7 +221,7 @@ function renderChart(ev) {
             (r) => `
           <li class="chart__row${r.highlight ? " chart__row--hi" : ""}">
             <div class="chart__row-head"><span>${escapeHTML(r.label)}</span><span class="mono">${Number(r.value).toFixed(2)}</span></div>
-            <div class="chart__track"><div class="chart__bar" style="width: ${Math.max(0, Math.min(100, Number(r.value) * 100))}%"></div></div>
+            <div class="chart__track"><div class="chart__bar" style="--w: ${Math.max(0, Math.min(100, Number(r.value) * 100))}%"></div></div>
           </li>`
           )
           .join("")}
