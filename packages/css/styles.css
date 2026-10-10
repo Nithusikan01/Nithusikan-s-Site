@@ -560,6 +560,18 @@ body.dark-theme #theme-button .icon--sun { display: block; }
 .edu li:first-child .edu__title { font-size: 17px; }
 .edu__sub { margin-top: 2px; color: var(--muted); font-size: 14.5px; }
 .edu__date { margin-top: 4px; }
+.edu__photo { margin: 0 0 16px; }
+.edu__photo img {
+  width: 100%;
+  aspect-ratio: 1200 / 841;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  transition: transform .6s ease;
+}
+.edu__photo { overflow: hidden; border-radius: var(--radius-sm); }
+.edu__photo:hover img { transform: scale(1.02); }
+.edu__photo figcaption { margin-top: 8px; color: var(--subtle); font-size: 12.5px; }
 
 .awards, .certs { list-style: none; display: grid; gap: 10px; font-size: 15px; }
 .awards { margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }

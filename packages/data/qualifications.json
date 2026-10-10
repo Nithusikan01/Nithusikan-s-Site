@@ -2,7 +2,14 @@
   {
     "title": "BScEng (Hons) in Computer Engineering",
     "subtitle": "University of Peradeniya<br>CGPA 3.50 / 4.00 · Second Class Upper",
-    "date": "Mar 2021 – Aug 2025"
+    "date": "Mar 2021 – Aug 2025",
+    "photo": {
+      "src": "packages/images/profile/convocation-2025.webp",
+      "alt": "Nithusikan receiving his BScEng degree at the University of Peradeniya General Convocation 2025",
+      "caption": "General Convocation 2025 · Photo: Media Unit, University of Peradeniya",
+      "width": 1200,
+      "height": 841
+    }
   },
   {
     "title": "Diploma in English",

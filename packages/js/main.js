@@ -364,6 +364,14 @@ function renderEducation(entries) {
     .map(
       (e) => `
       <li>
+        ${
+          e.photo && present(e.photo.src)
+            ? `<figure class="edu__photo">
+          <img src="${escapeHTML(e.photo.src)}" alt="${escapeHTML(e.photo.alt)}" width="${e.photo.width || 1200}" height="${e.photo.height || 840}" loading="lazy">
+          ${present(e.photo.caption) ? `<figcaption>${escapeHTML(e.photo.caption)}</figcaption>` : ""}
+        </figure>`
+            : ""
+        }
         <p class="edu__title">${escapeHTML(e.title)}</p>
         <p class="edu__sub">${withBreaks(e.subtitle).replace(/<br>/g, " · ")}</p>
         <p class="edu__date meta">${escapeHTML(e.date)}</p>
