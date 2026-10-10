@@ -1,74 +1,415 @@
 [
   {
-    "title": "8-bit Single Cycle Processor",
-    "description": "An 8-bit single cycle CPU with associated memory hierarchy. The processor includes an ALU, register files, control logic, forwarding unit, data memory, data cache, instruction memory and instruction cache.",
-    "image": "./packages/images/processor.jpg",
-    "duration": "2023 March - 2023 June",
-    "link": "#",
-    "linkText": "GitHub"
+    "id": "anamnesis",
+    "title": "Anamnesis - Production RAG Medical Study Assistant",
+    "tagline": "An AI study assistant that answers medical students' questions from curated textbooks, deployed in production on AWS.",
+    "period": "Jun 2026 – Present",
+    "tier": "featured-hero",
+    "image": "packages/images/projects/anamnesis-architecture.svg",
+    "imageAlt": "Anamnesis system architecture diagram",
+    "gallery": [
+      {
+        "label": "Architecture",
+        "src": "packages/images/projects/anamnesis-architecture.svg",
+        "alt": "Architecture diagram: React on CloudFront and S3, FastAPI on ECS Fargate, hybrid retrieval with Pinecone and BM25, cross-encoder reranker, LLM generation, response cache and RDS PostgreSQL, deployed with GitHub Actions and ECR",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "label": "Retrieval eval",
+        "src": "packages/images/projects/anamnesis-eval.svg",
+        "alt": "Bar chart of Recall@5 on 100 paraphrased questions: BM25 only 0.53, Hybrid 0.82, Hybrid plus rerank (production) 0.94, Dense only 0.98",
+        "width": 1200,
+        "height": 700
+      },
+      {
+        "label": "App",
+        "src": "packages/images/projects/anamnesis-login.webp",
+        "alt": "Anamnesis sign-in screen: ask questions against your class library",
+        "width": 1365,
+        "height": 638
+      }
+    ],
+    "metrics": [
+      {
+        "value": "0.94",
+        "label": "Recall@5"
+      },
+      {
+        "value": "+41 pts",
+        "label": "vs BM25 baseline"
+      },
+      {
+        "value": "0.14 ms",
+        "label": "cache hit (vs 3.3 s)"
+      }
+    ],
+    "bullets": [
+      "Full-stack RAG app: FastAPI in Docker on AWS ECS Fargate (ECR), React + TypeScript on S3 + CloudFront, RDS PostgreSQL and Pinecone, shipped with GitHub Actions CI/CD.",
+      "Own LangChain-based RAG library: hybrid retrieval (Sentence Transformers + BM25), cross-encoder reranking, configurable chunking and conversation memory; Gemini Flash plus gpt-oss-120B/20B and Qwen models.",
+      "Evaluated retrieval with Recall@K, MRR and nDCG (paired-bootstrap CIs) over 6,665 chunks and 150 labelled queries, and generation with RAGAS; ablations showed the reranker adds +12 points Recall@5.",
+      "Two-tier response cache: exact hits return in 0.14 ms instead of 3.3 s and save ~1,340 tokens per repeat question."
+    ],
+    "tech": [
+      "Python",
+      "FastAPI",
+      "LangChain",
+      "Pinecone",
+      "BM25",
+      "RAGAS",
+      "Gemini",
+      "React",
+      "Docker",
+      "AWS",
+      "GitHub Actions"
+    ],
+    "links": {
+      "live": "https://d1u7p8d1507l08.cloudfront.net/login",
+      "github": "https://github.com/Nithusikan01/Medical-Student-Assistant",
+      "architecture": "packages/images/projects/anamnesis-architecture.svg"
+    },
+    "category": "Featured",
+    "pipeline": [
+      {
+        "stage": "Input",
+        "label": "Student question"
+      },
+      {
+        "stage": "Retrieve",
+        "label": "Hybrid: Pinecone + BM25"
+      },
+      {
+        "stage": "Rerank",
+        "label": "Cross-encoder · +12 pts",
+        "highlight": true
+      },
+      {
+        "stage": "Generate",
+        "label": "Gemini Flash · gpt-oss · Qwen"
+      },
+      {
+        "stage": "Answer",
+        "label": "With cited passages"
+      }
+    ],
+    "pipelineMetrics": [
+      {
+        "value": "0.94",
+        "label": "Recall@5, 150 labelled queries"
+      },
+      {
+        "value": "+41 pts",
+        "label": "over the BM25 baseline"
+      },
+      {
+        "value": "0.14 ms",
+        "label": "cache hit, down from 3.3 s"
+      },
+      {
+        "value": "6,665",
+        "label": "chunks indexed and evaluated"
+      }
+    ],
+    "evaluation": {
+      "title": "Retrieval quality - paraphrased questions",
+      "subtitle": "Recall@5 · n = 100",
+      "note": "Reranker ablation: +12 pts Recall@5.",
+      "rows": [
+        {
+          "label": "BM25 only",
+          "value": 0.53
+        },
+        {
+          "label": "Hybrid",
+          "value": 0.82
+        },
+        {
+          "label": "Hybrid + rerank (production)",
+          "value": 0.94,
+          "highlight": true
+        },
+        {
+          "label": "Dense only",
+          "value": 0.98
+        }
+      ]
+    }
   },
   {
-    "title": "Automated-Hydroponic-System",
-    "description": "The project 'IoT-Based Automated Hydroponic System' aims to develop a modern and sustainable approach to hydroponic farming that maximizes efficiency by using technology to monitor and control growth conditions, reducing resource consumption, and enabling users to make data-driven decisions for better crop management.",
-    "image": "./packages/images/hydropoics.jpg",
-    "duration": "2023 September - 2024 January",
-    "link": "https://projects.ce.pdn.ac.lk/3yp/e19/Automated-Hydroponic-System/",
-    "linkText": "GitHub"
-  },
-  {
-    "title": "SkyMart Online Shoping Store",
-    "description": "The SkyMart Online Shoping Store is a robust and user-friendly solution designed to enhance the onlie Shoping efficiency and improve the overall user experience.",
-    "image": "./packages/images/skyMart.png",
-    "duration": "2023 March - 2023 June",
-    "link": "https://github.com/cepdnaclk/e19-co226-Online-Grocery-Shop",
-    "linkText": "GitHub"
-  },
-  {
-    "title": "Student Attendance Management System",
-    "description": "The Student Attendance Management System is a versatile and user-centric platform that enhances the school's attendance tracking and communication processes.",
-    "image": "./packages/images/ATTENDANCE.png",
-    "duration": "2023 March - 2023 June",
-    "link": "https://projects.ce.pdn.ac.lk/co225/e19/school-attendance-management-system/",
-    "linkText": "GitHub"
-  },
-  {
-    "title": "Engineering Education Unit WebApplication",
-    "description": "A state-of-the-art web application that combines robust security features with a responsive user interface and an exceptionally user-friendly admin page.",
-    "image": "./packages/images/Home page.png",
-    "duration": "2023 March - 2023 June",
-    "link": "https://projects.ce.pdn.ac.lk/co227/e19/Engineering-Education-Unit/",
-    "linkText": "GitHub"
-  },
-  {
+    "id": "cyberattack-detection",
     "title": "Cross-Layer Cyberattack Detection Framework",
-    "description": "An end-to-end pipeline to detect known and unknown cyberattacks by analyzing network traffic and identifying affected components from application-layer logs.",
-    "image": "./packages/images/cyberattack.jpg",
-    "duration": "2025 March - Present",
-    "link": "https://github.com/cepdnaclk/e19-4yp-Predicting-Cybersecurity-Attacks-Using-Compound-Analysis-with-Classification-Algorithms",
-    "linkText": "GitHub"
+    "tagline": "Final year project: detecting known and unknown cyberattacks by correlating network traffic with application-layer logs.",
+    "period": "Mar 2025 – Aug 2025",
+    "tier": "featured",
+    "image": "packages/images/projects/cyberattack-detection.svg",
+    "imageAlt": "Pipeline diagram of the cross-layer cyberattack detection framework",
+    "metrics": [
+      {
+        "value": "97%",
+        "label": "classification accuracy"
+      },
+      {
+        "value": "12M+",
+        "label": "flow records"
+      }
+    ],
+    "bullets": [
+      "Built PySpark preprocessing and feature-engineering pipelines handling high-dimensional data and class imbalance.",
+      "Trained multiclass Random Forest and XGBoost detectors tracked in MLflow, plus semi-supervised anomaly detection for unseen attacks."
+    ],
+    "tech": [
+      "Python",
+      "PySpark",
+      "Scikit-learn",
+      "XGBoost",
+      "MLflow"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/cepdnaclk/e19-4yp-Predicting-Cybersecurity-Attacks-Using-Compound-Analysis-with-Classification-Algorithms"
+    },
+    "category": "Final year project"
   },
   {
-    "title": "ML-Based Inpatient Bed Demand Forecasting",
-    "description": "A machine learning application for forecasting inpatient bed demand to improve hospital resource allocation and patient satisfaction.",
-    "image": "./packages/images/bedforecast.jpg",
-    "duration": "2023 November - 2024 April",
-    "link": "https://github.com/Nithusikan01/ML-Based-Bed-Demand-Forecasting",
-    "linkText": "GitHub"
-  },
-  {
+    "id": "anpr",
     "title": "Vehicle Number Plate Recognition System",
-    "description": "A real-time application using YOLOv8 and EasyOCR for automatic vehicle detection and license plate recognition.",
-    "image": "./packages/images/numberplate.jpg",
-    "duration": "2024 April - Present",
-    "link": "https://github.com/Nithusikan01/Vehicle-Number-Plate-Recognition-System.git",
-    "linkText": "GitHub"
+    "tagline": "Real-time ANPR for Sri Lankan vehicles using a two-stage deep learning pipeline.",
+    "period": "2024",
+    "tier": "featured",
+    "image": "packages/images/projects/anpr.svg",
+    "imageAlt": "Pipeline diagram: video frame, YOLOv8 vehicle detection, YOLOv8 plate localization, EasyOCR, rule-based correction, plate text",
+    "metrics": [],
+    "bullets": [
+      "Fine-tuned separate YOLOv8 models for vehicle detection and plate localization on locally curated datasets, including vehicle classes absent from standard benchmarks.",
+      "Integrated EasyOCR with rule-based post-processing and character correction for robust recognition."
+    ],
+    "tech": [
+      "Python",
+      "YOLOv8",
+      "PyTorch",
+      "OpenCV",
+      "EasyOCR"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/Vehicle-Number-Plate-Recognition-System"
+    },
+    "category": "Computer vision"
   },
   {
+    "id": "support-chatbot",
     "title": "Customer Support Chatbot with LLaMA-3",
-    "description": "An intelligent customer support chatbot using fine-tuned LLaMA-3 and Retrieval-Augmented Generation (RAG) for enhanced conversational support.",
-    "image": "./packages/images/chatbot.jpg",
-    "duration": "2024 April - Present",
-    "link": "https://github.com/Nithusikan01/Customer-Support-Chat-Bot-using-LLAMA-3.git",
-    "linkText": "GitHub"
+    "tagline": "A customer support chatbot combining a fine-tuned LLaMA-3 model with Retrieval-Augmented Generation.",
+    "period": "2024",
+    "tier": "featured",
+    "image": "packages/images/projects/support-chatbot.svg",
+    "imageAlt": "Pipeline diagram: customer question, retriever over support content, fine-tuned LLaMA-3, FastAPI, grounded answer",
+    "metrics": [],
+    "bullets": [
+      "Combined a fine-tuned LLaMA-3 model with RAG over support content for grounded answers.",
+      "TODO (owner): add one bullet with the fine-tuning approach (e.g. PEFT/LoRA), data, and any result."
+    ],
+    "tech": [
+      "Python",
+      "LLaMA-3",
+      "LangChain",
+      "RAG",
+      "PEFT",
+      "FAISS",
+      "ChromaDB",
+      "FastAPI"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/Customer-Support-Chat-Bot-using-LLAMA-3"
+    },
+    "category": "LLM"
+  },
+  {
+    "id": "bed-demand-forecasting",
+    "title": "ML-Based Inpatient Bed Demand Forecasting",
+    "tagline": "Forecasting hospital inpatient bed demand to improve resource allocation.",
+    "period": "Nov 2023 – Apr 2024",
+    "tier": "featured",
+    "image": "packages/images/projects/bed-forecasting.webp",
+    "imageAlt": "Illustration of a hospital bed with a patient monitor",
+    "metrics": [],
+    "bullets": [
+      "Built a machine learning application that forecasts inpatient bed demand to support hospital capacity planning.",
+      "TODO (owner): add the model(s) used and an evaluation metric (e.g. MAE/MAPE)."
+    ],
+    "tech": [
+      "Python",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/ML-Based-Bed-Demand-Forecasting",
+      "paper": "https://www.researchgate.net/publication/391584272_Predicting_Inpatient_Bed_Demand_Using_Machine_Learning"
+    },
+    "category": "Healthcare ML · Published"
+  },
+  {
+    "id": "tr-ledger",
+    "title": "TR Ledger - Debt & Bill Reminder App",
+    "tagline": "An offline-first Flutter mobile app for TR Clothings that tracks bills, cheque payments and recurring debts, and reminds the owner before each due date.",
+    "period": "Sep 2026",
+    "tier": "featured",
+    "category": "Flutter mobile app",
+    "image": "packages/images/projects/tr-ledger/dashboard.webp",
+    "imageAlt": "TR Ledger dashboard showing total outstanding, this month's payments and an overdue alert",
+    "metrics": [],
+    "bullets": [
+      "Flutter app with Riverpod state management, a Drift (SQLite) local database and go_router navigation; all data stays on the device.",
+      "One-time and recurring debts (daily, monthly on a set day or a custom interval), with schedules anchored to the original due date so a late payment never shifts future dates.",
+      "Local notifications 7, 5, 3 and 1 day before each due date, re-armed on every launch because Android drops scheduled alarms when an app is force-stopped.",
+      "Dashboard with summary cards, month filter and overdue banner, plus payment history and a decoder for the shop's price codes."
+    ],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Riverpod",
+      "Drift (SQLite)",
+      "go_router",
+      "Local Notifications"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/Debt-Reminder"
+    },
+    "screens": [
+      {
+        "label": "Dashboard",
+        "src": "packages/images/projects/tr-ledger/dashboard.webp",
+        "alt": "Dashboard with total outstanding of Rs 49,850, this month's total, an overdue payment banner and upcoming payments grouped by month"
+      },
+      {
+        "label": "Reminder",
+        "src": "packages/images/projects/tr-ledger/push-notification.webp",
+        "alt": "Lock screen notifications: rent due tomorrow and an electricity bill due in 3 days"
+      },
+      {
+        "label": "Alerts",
+        "src": "packages/images/projects/tr-ledger/notifications.webp",
+        "alt": "Notifications screen listing overdue and upcoming payment reminders"
+      },
+      {
+        "label": "Price decoder",
+        "src": "packages/images/projects/tr-ledger/price-code-decoder.webp",
+        "alt": "Price decoder turning the letter code CFAKA into Rs 25,000"
+      },
+      {
+        "label": "Price code setup",
+        "src": "packages/images/projects/tr-ledger/price-code-setup.webp",
+        "alt": "Price code setup assigning one or more letters to each digit"
+      },
+      {
+        "label": "Settings",
+        "src": "packages/images/projects/tr-ledger/settings.webp",
+        "alt": "Settings screen with currency, price code and reminder schedule"
+      }
+    ]
+  },
+  {
+    "id": "eeu-platform",
+    "title": "Engineering Education Unit Web Platform",
+    "tagline": "Official web platform for the Faculty of Engineering's Engineering Education Unit, University of Peradeniya.",
+    "period": "2023",
+    "tier": "more",
+    "image": "packages/images/projects/eeu-platform.webp",
+    "imageAlt": "Engineering Education Unit website home page",
+    "metrics": [],
+    "bullets": [
+      "Spring Boot REST APIs with Spring Security, JWT and Google OAuth; React frontend built from Figma designs."
+    ],
+    "tech": [
+      "Spring Boot",
+      "Spring Security",
+      "JWT",
+      "React",
+      "MySQL"
+    ],
+    "links": {
+      "live": "https://eeu.pdn.ac.lk/",
+      "github": "https://projects.ce.pdn.ac.lk/co227/e19/Engineering-Education-Unit/"
+    }
+  },
+  {
+    "id": "hydroponics",
+    "title": "IoT-Based Automated Hydroponic System",
+    "tagline": "Monitoring and controlling hydroponic growth conditions to cut resource use and support data-driven crop management.",
+    "period": "Sep 2023 – Jan 2024",
+    "tier": "more",
+    "image": "packages/images/projects/hydroponics.webp",
+    "imageAlt": "Automated hydroponic system prototype with sensors",
+    "metrics": [],
+    "bullets": [
+      "IoT system that monitors and controls growth conditions for efficient, sustainable hydroponic farming."
+    ],
+    "tech": [
+      "IoT",
+      "AWS IoT Core"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://projects.ce.pdn.ac.lk/3yp/e19/Automated-Hydroponic-System/"
+    }
+  },
+  {
+    "id": "skymart",
+    "title": "SkyMart Online Shopping Store",
+    "tagline": "An online grocery store focused on efficient, user-friendly shopping.",
+    "period": "Mar 2023 – Jun 2023",
+    "tier": "more",
+    "image": "packages/images/projects/skymart.webp",
+    "imageAlt": "SkyMart online store home page",
+    "metrics": [],
+    "bullets": [],
+    "tech": [
+      "SQL",
+      "Web"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/cepdnaclk/e19-co226-Online-Grocery-Shop"
+    }
+  },
+  {
+    "id": "attendance",
+    "title": "Student Attendance Management System",
+    "tagline": "A platform that improves a school's attendance tracking and communication.",
+    "period": "Mar 2023 – Jun 2023",
+    "tier": "more",
+    "image": "packages/images/projects/attendance.webp",
+    "imageAlt": "Student attendance management system dashboard",
+    "metrics": [],
+    "bullets": [],
+    "tech": [
+      "Java"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://projects.ce.pdn.ac.lk/co225/e19/school-attendance-management-system/"
+    }
+  },
+  {
+    "id": "cpu",
+    "title": "8-bit Single Cycle Processor",
+    "tagline": "An 8-bit single-cycle CPU with ALU, register file, control logic, forwarding unit, and data/instruction caches.",
+    "period": "Mar 2023 – Jun 2023",
+    "tier": "more",
+    "image": "packages/images/projects/cpu.webp",
+    "imageAlt": "Illustration of a processor chip on a circuit board",
+    "metrics": [],
+    "bullets": [],
+    "tech": [
+      "Verilog",
+      "Computer Architecture"
+    ],
+    "links": {
+      "live": "",
+      "github": ""
+    }
   }
 ]

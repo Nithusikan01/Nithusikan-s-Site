@@ -1,391 +1,325 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--==================== UNICONS ====================-->
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-        
-        <!--==================== SWIPER CSS ====================-->
-        <link rel="stylesheet" href="./packages/css/swiper-bundle.min.css">
-        
-        <!--==================== CSS ====================-->
-        <link rel="stylesheet" href="./packages/css/styles.css">
+  <title>Nithusikan Thasavaran - AI / ML Engineer</title>
+  <meta name="description" content="AI / ML Engineer building production LLM and RAG systems. Generative AI features in production for a UK healthcare software company; Anamnesis, a RAG assistant on AWS (Recall@5 0.94).">
+  <link rel="canonical" href="https://nithusikan01.github.io/Nithusikan-s-Site/">
+  <meta name="theme-color" content="#0a0c0e">
 
-        <!-- Favicon -->
-        <link rel="icon" href="./packages/images/ICON.png" type="image/x-icon">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nithusikan Thasavaran - AI / ML Engineer">
+  <meta property="og:description" content="Production LLM, RAG and machine learning systems - from prototype to production.">
+  <meta property="og:url" content="https://nithusikan01.github.io/Nithusikan-s-Site/">
+  <meta property="og:image" content="https://nithusikan01.github.io/Nithusikan-s-Site/packages/images/og/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nithusikan Thasavaran - AI / ML Engineer">
+  <meta name="twitter:description" content="Production LLM, RAG and machine learning systems - from prototype to production.">
+  <meta name="twitter:image" content="https://nithusikan01.github.io/Nithusikan-s-Site/packages/images/og/og-image.jpg">
 
-        <title>Nithusikan</title>
-    </head>
-    <body>
-        <!--==================== HEADER ====================-->
-        <header class="header" id="header">
-            <nav class="nav container">
-                <a href="#" class="nav__logo">Thasavaran Nithusikan</a>
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list grid">
-                        <li class="nav__item">
-                            <a href="#home" class="nav__link">
-                                <i class="uil uil-estate nav__icon"></i>Home
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#about" class="nav__link">
-                                <i class="uil uil-user nav__icon"></i>About
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#education" class="nav__link">
-                                <i class="uil uil-file-alt nav__icon"></i>Education
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#projects" class="nav__link">
-                                <i class="uil uil-scenery nav__icon"></i>Projects                               
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#certifications" class="nav__link">
-                                <i class="uil uil-briefcase-alt nav__icon"></i>Certifications
-                            </a>
-                        </li>
-                        <li class="nav__item">
-                            <a href="#contact" class="nav__link">
-                                <i class="uil uil-message nav__icon"></i>Contact                               
-                            </a>
-                        </li>
-                    </ul>
-                    <i class="uil uil-times nav__close" id="nav-close"></i>
-                </div>
-                <div class="nav__btns">
-                    <!-- Theme change button -->
+  <!-- Favicons -->
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 
-                    <i class="uil uil-moon change-theme" id="theme-button"></i>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
 
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class="uil uil-apps"></i>
-                    </div>
-                </div>
-            </nav>
-        </header>
+  <link rel="stylesheet" href="./packages/css/styles.css">
+  <link rel="preload" as="image" href="./packages/images/profile/headshot.webp" type="image/webp">
 
-        <!--==================== MAIN ====================-->
-        <main class="main">
-            <!--==================== HOME ====================-->
-            <section class="home section" id="home">
-                <div class="home__container container grid">
-                    <div class="home__content grid">
-                        <div class="home__social">
-                            <a href="https://www.linkedin.com/in/nithusikan-t-1b0615255" target="_blank" class="home__social-icon">
-                                <i class="uil uil-linkedin-alt"></i>
-                            </a>
-                            
-                            <!--a href="https://twitter.com/prashanna01" target="_blank" class="home__social-icon">
-                                <i class="uil uil-twitter-alt"></i>
-                            </a-->
-                            <a href="https://github.com/Nithusikan01" target="_blank" class="home__social-icon">
-                                <i class="uil uil-github-alt"></i>
-                            </a>
-                        </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nithusikan Thasavaran",
+    "jobTitle": "AI / ML Engineer",
+    "url": "https://nithusikan01.github.io/Nithusikan-s-Site/",
+    "image": "https://nithusikan01.github.io/Nithusikan-s-Site/packages/images/profile/headshot.webp",
+    "email": "mailto:tnithusikan@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Colombo", "addressCountry": "LK" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Peradeniya" },
+    "sameAs": ["https://www.linkedin.com/in/nithusikan-t/", "https://github.com/Nithusikan01"]
+  }
+  </script>
 
-                        <div class="home__img">
-                            <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <mask id="mask0" mask-type="alpha">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                </mask>
-                                <g mask="url(#mask0)">
-                                    <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"/>
-                                    <image class="home__blob-img" x="" xlink:href="packages/images/myself 1.jpg"/>
-                                </g>
-                            </svg>
-                        </div>
+  <script defer src="./packages/js/main.js"></script>
+</head>
+<body>
+  <!-- Theme before first paint: saved choice, else the dark default -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (t !== "light") document.body.classList.add("dark-theme");
+      document.documentElement.classList.add("js");
+    })();
+  </script>
 
-                        <div class="home__data">
-                            <h1 class="home__title">Hi, I'm Nithusikan</h1>
-                            <h3 class="home__subtitle">Computer Engineering Graduate</h3>
-                            <p class="home__description">
-                                Aspiring Data Scientist and Machine Learning Engineer with hands-on experience in NLP, computer vision, deep learning, web and software development, and web scraping. Skilled in designing and implementing scalable AI-driven solutions that address real-world challenges, with a strong foundation in system design, full-stack development, and cybersecurity. Passionate about leveraging machine learning, deep learning, and automation to solve complex problems across diverse domains.                            </p>
-                            <a href="#contact" class="button button--flex home__button">
-                                Contact Me<i class="uil uil-message button__icon"></i>
-                            </a>
-                        </div>
-                    </div>
+  <!--==================== ICON SPRITE (Lucide) ====================-->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5M12 15V3"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7M12 19V5"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+    </defs>
+  </svg>
 
-                    <div class="home__scroll">
-                        <a href="#about" class="home__scroll-button button--flex">
-                            <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                            <span class="home__scroll-name">Scroll Down</span>
-                            <i class="uil uil-arrow-down home__scroll-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </section>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-            <!--==================== ABOUT ====================-->
-            <section class="about section" id="about">
-                <h2 class="section__title">About Me</h2>
-                <span class="section__subtitle">My Introduction</span>
+  <!--==================== HEADER ====================-->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Primary">
+      <a href="#home" class="nav__logo">
+        <span class="nav__mark mono" aria-hidden="true">NT</span>
+        <span class="nav__name">Nithusikan Thasavaran</span>
+      </a>
 
-                <div class="about__container container grid" style="display: flex; align-items: center; flex-wrap: wrap; gap: 2rem;">
-                    <img src="packages/images/Nithusikan half offl.jpg" alt="Nithusikan Thasavaran"
-                        style="width: 250px; height: 250px; object-fit: cover; border-radius: 50%;
-                    border: 4px solid #1b4332; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-                    margin-top: -250px;">
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li><a href="#experience" class="nav__link">Experience</a></li>
+          <li><a href="#projects" class="nav__link">Projects</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#stack" class="nav__link">Stack</a></li>
+          <li><a href="#contact" class="nav__link">Contact</a></li>
+        </ul>
+        <button type="button" class="icon-btn nav__close" id="nav-close" aria-label="Close menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
 
-                    <div class="about__data" style="flex: 1; min-width: 280px;">
-                        <p class="about__description" style="margin-bottom: 1rem;">
-                            Hello! I'm a final-year Computer Engineering undergraduate at the University of Peradeniya with a strong passion for
-                            <strong>Data Science</strong>, <strong>Machine Learning</strong>, and <strong>AI-driven system design</strong>.
-                        </p>
+      <div class="nav__actions">
+        <button type="button" class="icon-btn" id="theme-button" aria-label="Toggle dark theme" aria-pressed="true">
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a href="./packages/pdf/Nithusikan_Thasavaran_CV.pdf" class="btn btn--ghost btn--sm nav__resume" download>
+          <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Resume
+        </a>
+        <button type="button" class="icon-btn nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="nav__backdrop" id="nav-backdrop" hidden></div>
+  </header>
 
-                        <p class="about__description" style="margin-bottom: 1rem;">
-                            My academic and hands-on experiences span a wide spectrum—from natural language processing and computer vision to network security and intelligent automation. I've developed real-world solutions using tools like <strong>PyTorch, Spring Boot, and React</strong>, working with languages such as Python, Java, and C.
-                        </p>
+  <main id="main">
+    <!--==================== HERO ====================-->
+    <section class="container hero" id="home" aria-labelledby="hero-title">
+      <div class="hero__row">
+        <div class="hero__copy">
+          <p class="badge"><span class="badge__dot" aria-hidden="true"></span>Open to AI / ML Engineer roles · Available within 2 weeks</p>
+          <p class="eyebrow mono">AI / ML Engineer</p>
+          <h1 class="hero__title" id="hero-title">I build LLM, RAG and agentic AI systems that run in production.</h1>
+          <p class="hero__intro">From RAG assistants deployed on AWS to generative AI features running in healthcare software today. I care about measurable quality: evaluation, reliability, and getting models out of notebooks and into production.</p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View projects
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a href="./packages/pdf/Nithusikan_Thasavaran_CV.pdf" class="btn btn--ghost" download>Download CV</a>
+            <a href="#contact" class="text-link">Get in touch</a>
+          </div>
+        </div>
 
-                        <p class="about__description" style="margin-bottom: 1rem;">
-                            Whether it's fine-tuning transformer models, building scalable back-end systems, or creating full-stack applications, I'm always exploring how technology can be used to create meaningful impact.
-                        </p>
-
-                        <p class="about__description" style="margin-bottom: 2rem;">
-                            This website is a reflection of my journey as a curious learner and builder. Thanks for stopping by—feel free to connect, explore, and collaborate as we grow together in this exciting world of tech!
-                        </p>
-
-                        <div class="about__info" style="display: flex; gap: 2rem; margin-bottom: 2rem;">
-                            <div>
-                                <span class="about__info-title" style="font-size: 1.5rem; font-weight: bold;">03+</span>
-                                <span class="about__info-name" style="display: block; font-size: 0.9rem;">Years <br> Experience</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title" style="font-size: 1.5rem; font-weight: bold;">05+</span>
-                                <span class="about__info-name" style="display: block; font-size: 0.9rem;">Completed <br> Certifications</span>
-                            </div>
-                            <div>
-                                <span class="about__info-title" style="font-size: 1.5rem; font-weight: bold;">10+</span>
-                                <span class="about__info-name" style="display: block; font-size: 0.9rem;">Projects <br> Finished</span>
-                            </div>
-                        </div>
-
-                        <div class="about__buttons">
-                            <a download="" href="packages/pdf/Nithusikan's Resume.pdf" class="button button--flex"
-                                style="display: inline-flex; align-items: center; padding: 0.75rem 1.5rem;
-                                    background-color: #1b4332; color: #fff; border-radius: 8px;
-                                    text-decoration: none; font-weight: 500;">
-                                Download Resume<i class="uil uil-download-alt button__icon" style="margin-left: 0.5rem;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!--==================== QUALIFICATION ====================-->
-            <section class="qualification__section" id="education">
-            <h2 class="section__title">Education</h2>
-            <span class="section__subtitle">My educational journey</span>
-
-            <div class="qualification__container container">
-                <div class="qualification__tabs">
-                <div class="qualification__button button--flex qualification__active" data-target="#education">
-                    <i class="uil uil-graduation-cap qualification__icon"></i>
-                    Education
-                </div>
-
-                <!-- Uncomment this if you want to add project/work tab later -->
-                <!-- <div class="qualification__button button--flex" data-target="#work">
-                    <i class="uil uil-briefcase-alt qualification__icon"></i>
-                    Projects
-                </div>  -->
-               
-                </div>
-
-                <div class="qualification__sections">
-                <!--==================== QUALIFICATION CONTENT ====================-->
-                <div class="qualification__content qualification__active" data-content id="education">
-                    <div id="qualification-timeline"></div>
-                </div>
-                </div>
+        <aside class="card profile" aria-label="Profile summary">
+          <div class="profile__head">
+            <img src="./packages/images/profile/headshot.webp" alt="Portrait of Nithusikan Thasavaran"
+                 class="profile__img" width="600" height="600" fetchpriority="high">
+            <div>
+              <p class="profile__name">Nithusikan Thasavaran</p>
+              <p class="profile__loc">Colombo, Sri Lanka · UTC+5:30</p>
             </div>
-            </section>
+          </div>
+          <dl class="kv">
+            <dt class="mono">Now</dt><dd>AI Engineer (Freelance), IN4M Solutions Ltd - UK, remote</dd>
+            <dt class="mono">Focus</dt><dd>LLM Pipelines · RAG · Agentic AI · LLM Evaluation · Speech AI (STT/TTS)</dd>
+            <dt class="mono">Edu</dt><dd>BScEng (Hons) Computer Engineering, University of Peradeniya - 3.50 / 4.00</dd>
+          </dl>
+          <ul class="socials" aria-label="Social links">
+            <li><a href="https://www.linkedin.com/in/nithusikan-t/" class="icon-btn icon-btn--boxed" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">
+              <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+            <li><a href="https://github.com/Nithusikan01" class="icon-btn icon-btn--boxed" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">
+              <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+            <li><a href="mailto:tnithusikan@gmail.com" class="icon-btn icon-btn--boxed" aria-label="Email tnithusikan@gmail.com">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></a></li>
+          </ul>
+        </aside>
+      </div>
 
-            
-            <!--==================== PORTFOLIO ====================-->
-            <section class="portfolio section" id="projects">
+      <!-- Signature panel: rendered from projects.json (Anamnesis pipeline) -->
+      <figure class="card pipeline" id="pipeline" aria-label="Anamnesis retrieval pipeline" hidden></figure>
+    </section>
 
-                <h2 class="section__title">Projects</h2>
-                <span class="section__subtitle">Most recent works</span>
+    <!--==================== HIGHLIGHTS ====================-->
+    <section class="container" aria-label="Highlights">
+      <ul class="stats">
+        <li><p class="stats__value mono">1+ yr</p><p class="stats__label">industry experience</p></li>
+        <li><p class="stats__value mono">2</p><p class="stats__label">AI features in production</p></li>
+        <li><p class="stats__value mono">10+</p><p class="stats__label">projects built</p></li>
+        <li><p class="stats__value mono">97%</p><p class="stats__label">accuracy on 12M+ flow records</p></li>
+      </ul>
+    </section>
 
-                <div class="portfolio__container container swiper-container">
-                    <div class="swiper-wrapper" id="portfolio-wrapper">
-                        <!-- JavaScript will inject portfolio items here -->
-                    </div>
+    <!--==================== EXPERIENCE ====================-->
+    <section class="container section" id="experience" aria-labelledby="experience-title">
+      <header class="section__head reveal">
+        <div>
+          <p class="eyebrow mono">01 / Experience</p>
+          <h2 class="section__title" id="experience-title">Results, not responsibilities.</h2>
+        </div>
+        <p class="section__desc">Production AI, software engineering and applied data science - newest first.</p>
+      </header>
+      <div class="jobs" id="experience-list"></div>
+    </section>
 
-                    <!-- Navigation arrows -->
-                    <div class="swiper-button-next">
-                        <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-                    </div>
-                    <div class="swiper-button-prev">
-                        <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-                    </div>
+    <!--==================== PROJECTS ====================-->
+    <section class="container section" id="projects" aria-labelledby="projects-title">
+      <header class="section__head reveal">
+        <div>
+          <p class="eyebrow mono">02 / Projects</p>
+          <h2 class="section__title" id="projects-title">Measured, shipped, documented.</h2>
+        </div>
+      </header>
 
-                    <!-- Pagination dots -->
-                    <div class="swiper-pagination"></div>
-                </div>
+      <div id="project-hero"></div>
+      <div class="grid grid--cards" id="project-grid"></div>
 
-            </section>
+      <div class="more">
+        <p class="more__line" id="more-line"></p>
+        <button type="button" class="btn btn--ghost btn--sm more__toggle" id="more-toggle" aria-expanded="false" aria-controls="project-more" hidden>
+          Show all projects
+          <svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+        </button>
+        <div class="grid grid--cards more__list" id="project-more" hidden></div>
+      </div>
+    </section>
 
-<!--==================== CERTIFICATIONS ====================-->
-<section class="portfolio section" id="certifications">
+    <!--==================== SERVICES ====================-->
+    <section class="container section" id="services" aria-labelledby="services-title">
+      <header class="section__head reveal">
+        <div>
+          <p class="eyebrow mono">03 / Services</p>
+          <h2 class="section__title" id="services-title">From prototype to production.</h2>
+        </div>
+        <p class="section__desc">I help startups and teams turn AI ideas into reliable systems - LLM features, RAG assistants, ML models and the cloud behind them.</p>
+      </header>
+      <div class="services reveal" id="services-grid"></div>
+      <ol class="process" id="process-list"></ol>
+      <div class="cta reveal">
+        <p class="cta__text">Have an AI idea, or a model that needs to work better?</p>
+        <a href="#contact" class="btn btn--primary">Let's talk
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </section>
 
-    <h2 class="section__title">Certifications</h2>
-    <span class="section__subtitle">Verified credentials</span>
+    <!--==================== STACK ====================-->
+    <section class="container section" id="stack" aria-labelledby="stack-title">
+      <header class="section__head reveal">
+        <div>
+          <p class="eyebrow mono">04 / Stack</p>
+          <h2 class="section__title" id="stack-title">Tools I work with.</h2>
+        </div>
+      </header>
+      <div class="stack" id="skills-grid"></div>
 
-    <div class="portfolio__container container swiper-container">
-        <div class="swiper-wrapper" id="certification-wrapper">
-            <!-- JavaScript will inject certification items here -->
+      <div class="grid grid--two" id="education">
+        <div class="card panel reveal">
+          <p class="panel__label mono">Education</p>
+          <ol class="edu" id="education-list"></ol>
+        </div>
+        <div class="card panel reveal" id="certifications">
+          <p class="panel__label mono">Certifications &amp; awards</p>
+          <ul class="awards" id="achievement-list"></ul>
+          <ul class="certs" id="cert-grid"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!--==================== CONTACT ====================-->
+    <section class="container section section--last" id="contact" aria-labelledby="contact-title">
+      <div class="card contact reveal">
+        <div class="contact__intro">
+          <p class="eyebrow mono">05 / Contact</p>
+          <h2 class="section__title" id="contact-title">Let's build something reliable.</h2>
+          <p class="contact__lead">Open to AI / ML Engineer roles and freelance AI projects. I usually reply within a day.</p>
+          <dl class="kv kv--contact">
+            <dt class="mono">Email</dt><dd><a href="mailto:tnithusikan@gmail.com">tnithusikan@gmail.com</a></dd>
+            <dt class="mono">Phone</dt><dd><a href="tel:+94762738806">+94 76 273 8806</a></dd>
+            <dt class="mono">Based</dt><dd>Colombo, Sri Lanka</dd>
+            <dt class="mono">LinkedIn</dt><dd><a href="https://www.linkedin.com/in/nithusikan-t/" target="_blank" rel="noopener noreferrer">linkedin.com/in/nithusikan-t</a></dd>
+            <dt class="mono">GitHub</dt><dd><a href="https://github.com/Nithusikan01" target="_blank" rel="noopener noreferrer">github.com/Nithusikan01</a></dd>
+          </dl>
         </div>
 
-        <!-- Navigation arrows -->
-        <div class="swiper-button-next">
-            <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
-        </div>
-        <div class="swiper-button-prev">
-            <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
-        </div>
+        <form action="https://formspree.io/f/mdorrelr" method="POST" class="form" id="contact-form" novalidate>
+          <div class="form__row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" autocomplete="name" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" autocomplete="email" placeholder="you@company.com" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" placeholder="Role, project or question" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" rows="5" placeholder="Tell me about the role or project" required></textarea>
+          </div>
+          <!-- Honeypot: hidden from people, catches bots -->
+          <div class="hp" aria-hidden="true">
+            <label for="gotcha">Leave this field empty</label>
+            <input type="text" name="_gotcha" id="gotcha" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="form__footer">
+            <button type="submit" class="btn btn--primary" id="contact-submit">
+              <span class="button__label">Send message</span>
+              <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>
+            </button>
+            <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-        <!-- Pagination dots -->
-        <div class="swiper-pagination"></div>
+  <!--==================== FOOTER ====================-->
+  <footer class="footer">
+    <div class="container footer__row">
+      <p>&copy; <span id="year">2026</span> Nithusikan Thasavaran · AI / ML Engineer</p>
+      <nav aria-label="Footer">
+        <ul class="footer__links">
+          <li><a href="https://github.com/Nithusikan01" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/nithusikan-t/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="mailto:tnithusikan@gmail.com">Email</a></li>
+        </ul>
+      </nav>
     </div>
+  </footer>
 
-</section>
-
-
-
-        <!--==================== CONTACT ME ====================-->
-        <section class="contact section" id="contact">
-            <h2 class="section__title">Contact me</h2>
-            <span class="section__subtitle">Get in touch</span>
-
-            <div class="contact__container container grid">
-                <div>
-                    <div class="contact__information">
-                        <i class="uil uil-phone-alt contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">Call me</h3>
-                            <span class="contatc__subtitle">(+94) 762738806</span>
-                        </div>
-                    </div>
-
-                    <div class="contact__information">
-                        <i class="uil uil-envelope contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">E-mail</h3>
-                            <span class="contatc__subtitle">tnithusikan@gmail.com</span>
-                        </div>
-                    </div>
-
-                    <div class="contact__information">
-                        <i class="uil uil-map-marker contact__icon"></i>
-
-                        <div>
-                            <h3 class="contact__title">Location</h3>
-                            <span class="contatc__subtitle">78/2A, Thiruvaiaru, Kilinochchi, Srilanka.</span>
-                        </div>
-                    </div>
-                </div>
-
-                <form action="https://formspree.io/f/mdorrelr" method="POST" class="contact__form grid">
-                    <div class="contact__inputs grid">
-                        <div class="contact__content">
-                            <label for="name" class="contact__label">Name</label>
-                            <input type="text" class="contact__input" name="name" id="name" placeholder="Your Name" required>
-                        </div>
-
-                        <div class="contact__content">
-                            <label for="email" class="contact__label">E-mail</label>
-                            <input type="email" class="contact__input" name="email" id="email" placeholder="Your Email" required>
-                        </div>
-                    </div>
-
-                    <div class="contact__content">
-                        <label for="Subject" class="contact__label">Subject</label>
-                        <input type="text" class="contact__input" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-
-                    <div class="contact__content">
-                        <label for="description" class="contact__label">Description</label>
-                        <textarea name="description" id="description" cols="0" rows="7" class="contact__input" placeholder="Enter your message" required></textarea>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="button button--flex">Send message
-                            <i class="uil uil-message button__icon"></i></button>
-                    
-                    </div>
-
-                    
-                </form>
-            </div>
-
-        </section>
-    </main>
-
-    <!--==================== FOOTER ====================-->
-    <footer class="footer">
-
-        <div class="footer__bg">
-            <div class="footer__container container grid">
-                <div>
-                    <h1 class="footer__title">Nithusikan</h1>
-                    <span class="footer__subtitle">Computer Engineering Graduate</span>
-                </div>
-
-                <ul class="footer__links">
-                    <li>
-                        <a href="#projects" class="footer__link">Projects</a>
-                    </li>
-                    <li>
-                        <a href="#certifications" class="footer__link">Certifications</a>
-                    </li>
-                    <li>
-                        <a href="#contact" class="footer__link">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="footer__socials">
-                    <!-- <a href="" target="_blank" class="footer__social">
-                        <i class="uil uil-facebook"></i>
-                    </a> -->
-                    <!-- <a href="" target="_blank" class="footer__social">
-                        <i class="uil uil-instagram"></i>
-                    </a> -->
-                    <a href="" target="_blank" class="footer__social">
-                        <i class="uil uil-twitter-alt"></i>
-                    </a>
-                </div>
-            </div>
-            <p class="footer__copy">&#169; Nithusikan Ntx. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!--==================== SCROLL TOP ====================-->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="uil uil-arrow-up scrollup__icon"></i>
-    </a>
-    
-
-    <!--==================== SWIPER JS ====================-->
-    <script src="./packages/js/swiper-bundle.min.js"></script>
-
-    <!--==================== MAIN JS ====================-->
-    <script src="./packages/js/main.js"></script>
+  <a href="#home" class="scrollup" id="scroll-up" aria-label="Back to top">
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </a>
 </body>
-
 </html>

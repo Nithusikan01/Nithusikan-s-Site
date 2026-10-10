@@ -1,0 +1,96 @@
+[
+  {
+    "group": "Generative AI & LLMs",
+    "items": [
+      "OpenAI API",
+      "Gemini",
+      "Amazon Bedrock",
+      "gpt-oss",
+      "Llama 3",
+      "Qwen",
+      "Groq",
+      "LangChain",
+      "Hugging Face Transformers",
+      "Prompt & Context Engineering",
+      "Speech-to-Text"
+    ]
+  },
+  {
+    "group": "RAG & Evaluation",
+    "items": [
+      "Embeddings",
+      "Semantic Search",
+      "Pinecone",
+      "ChromaDB",
+      "FAISS",
+      "Sentence Transformers",
+      "BM25",
+      "Cross-Encoder Reranking",
+      "RAGAS",
+      "Recall@K / MRR / nDCG"
+    ]
+  },
+  {
+    "group": "Machine Learning",
+    "items": [
+      "Scikit-learn",
+      "PyTorch",
+      "TensorFlow",
+      "XGBoost",
+      "YOLOv8",
+      "NLP",
+      "Computer Vision",
+      "Feature Engineering"
+    ]
+  },
+  {
+    "group": "MLOps & Cloud",
+    "items": [
+      "AWS (ECS Fargate, ECR, RDS, S3, CloudFront, EC2, Lightsail)",
+      "Amazon SageMaker",
+      "Docker",
+      "GitHub Actions",
+      "MLflow",
+      "DVC",
+      "Git"
+    ]
+  },
+  {
+    "group": "Web & Mobile",
+    "items": [
+      "FastAPI",
+      "Django",
+      "Spring Boot",
+      "REST APIs",
+      "React",
+      "TypeScript",
+      "Flutter"
+    ]
+  },
+  {
+    "group": "Data",
+    "items": [
+      "PySpark",
+      "Pandas",
+      "NumPy",
+      "SQL",
+      "PostgreSQL",
+      "MySQL",
+      "Neo4j",
+      "Scrapy",
+      "Selenium"
+    ]
+  },
+  {
+    "group": "Languages",
+    "items": [
+      "Python",
+      "Java",
+      "SQL",
+      "JavaScript",
+      "TypeScript",
+      "C",
+      "Dart"
+    ]
+  }
+]

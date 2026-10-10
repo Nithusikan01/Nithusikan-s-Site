@@ -1,27 +1,22 @@
 [
   {
-    "title": "GCE Ordinary Level",
-    "subtitle": "Jaffna Hindu College<br>9A",
-    "date": "2016",
-    "direction": "right"
-  },
-  {
-    "title": "GCE Advance Level",
-    "subtitle": "Jaffna Hindu College<br>3A",
-    "date": "2017 January - 2019 August",
-    "direction": "left"
+    "title": "BScEng (Hons) in Computer Engineering",
+    "subtitle": "University of Peradeniya<br>CGPA 3.50 / 4.00 · Second Class Upper",
+    "date": "Mar 2021 – Aug 2025"
   },
   {
     "title": "Diploma in English",
     "subtitle": "British College, Kilinochchi",
-    "date": "2020",
-    "direction": "right"
+    "date": "2020"
   },
   {
-    "title": "Engineering Undergraduate",
-    "subtitle": "University of Peradeniya<br>Current GPA: 3.50",
-    "date": "2021 March - 2025 August",
-    "direction": "left",
-    "final": true 
+    "title": "G.C.E. Advanced Level",
+    "subtitle": "Jaffna Hindu College<br>3A · Z-score 2.1369 · District Rank 46 · Island Rank 562",
+    "date": "2017 – 2019"
+  },
+  {
+    "title": "G.C.E. Ordinary Level",
+    "subtitle": "Jaffna Hindu College<br>9A",
+    "date": "2016"
   }
 ]

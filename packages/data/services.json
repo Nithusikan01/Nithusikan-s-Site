@@ -1,0 +1,120 @@
+{
+  "services": [
+    {
+      "icon": "sparkles",
+      "title": "LLM & Generative AI Applications",
+      "summary": "Custom LLM features that automate real workflows - document generation, summarisation, transcription and structured data extraction.",
+      "bullets": [
+        "Multi-step LLM pipelines with OpenAI, Gemini, Amazon Bedrock and open-weight models (gpt-oss, Llama, Qwen)",
+        "Speech-to-text workflows that turn conversations into structured documents",
+        "Privacy-first design, including local PII de-identification"
+      ],
+      "proof": {
+        "text": "Production LLM features for a UK healthcare software company",
+        "href": "#experience"
+      }
+    },
+    {
+      "icon": "search",
+      "title": "RAG Systems & AI Knowledge Assistants",
+      "summary": "Assistants that answer accurately from your own documents, manuals or knowledge base.",
+      "bullets": [
+        "Semantic and hybrid search with embeddings, vector databases and BM25",
+        "Cross-encoder reranking, conversation memory and response caching",
+        "Measured retrieval and answer quality (Recall@K, MRR, nDCG, RAGAS)"
+      ],
+      "proof": {
+        "text": "Anamnesis - Recall@5 0.94 in production",
+        "href": "#projects"
+      }
+    },
+    {
+      "icon": "gauge",
+      "title": "Prompt Optimization & LLM Evaluation",
+      "summary": "For AI features that work \"most of the time\" - I make them accurate, consistent and cheaper to run.",
+      "bullets": [
+        "Systematic evaluation with test cases and repeated-run accuracy checks",
+        "Prompt and context engineering to cut tokens, latency and API cost",
+        "Reliability fixes for rate limits, failures and inconsistent outputs"
+      ],
+      "proof": {
+        "text": "5/8 → 8/8 cases passing, 55% fewer reasoning tokens",
+        "href": "#experience"
+      }
+    },
+    {
+      "icon": "brain",
+      "title": "Machine Learning Model Development",
+      "summary": "Predictive models for tabular data, text and images, built and validated properly.",
+      "bullets": [
+        "Classification and prediction with Scikit-learn, XGBoost and PyTorch",
+        "NLP and computer vision, including fine-tuned YOLOv8 detection",
+        "Feature engineering, tuning and experiment tracking with MLflow and DVC"
+      ],
+      "proof": {
+        "text": "97% accuracy on 12M+ records (cyberattack detection)",
+        "href": "#projects"
+      }
+    },
+    {
+      "icon": "cloud",
+      "title": "Backend APIs & Cloud Deployment",
+      "summary": "Getting AI and web applications live, secure and maintainable.",
+      "bullets": [
+        "REST APIs with FastAPI and Django on PostgreSQL",
+        "Docker, GitHub Actions CI/CD and AWS (ECS Fargate, RDS, S3, CloudFront, Lightsail)",
+        "React + TypeScript frontends when a complete product is needed"
+      ],
+      "proof": {
+        "text": "Full-stack AWS deployment of Anamnesis",
+        "href": "#projects"
+      }
+    },
+    {
+      "icon": "database",
+      "title": "Data Collection & Processing Pipelines",
+      "summary": "Clean, usable data for analytics and machine learning.",
+      "bullets": [
+        "Web scraping with Scrapy, Selenium and BeautifulSoup",
+        "Large-scale processing with PySpark and Pandas",
+        "Graph analysis with Neo4j and NetworkX"
+      ],
+      "proof": {
+        "text": "~100K-tweet multilingual NLP pipeline at LIRNEasia",
+        "href": "#experience"
+      }
+    },
+    {
+      "icon": "smartphone",
+      "title": "Web & Mobile Applications",
+      "summary": "Full-stack web apps and cross-platform Flutter mobile apps, from first design to release.",
+      "bullets": [
+        "Web apps with React + TypeScript on Django, FastAPI or Spring Boot backends",
+        "Cross-platform Flutter apps with offline-first local storage and scheduled notifications",
+        "Production delivery with Docker, CI/CD and cloud hosting"
+      ],
+      "proof": {
+        "text": "TR Ledger Flutter app and the University of Peradeniya EEU web platform",
+        "href": "#projects"
+      }
+    }
+  ],
+  "process": [
+    {
+      "step": "Understand",
+      "text": "A short call to scope the problem and define what success looks like."
+    },
+    {
+      "step": "Prototype",
+      "text": "A quick working version to validate the approach."
+    },
+    {
+      "step": "Evaluate",
+      "text": "Measure accuracy and performance against real test cases."
+    },
+    {
+      "step": "Ship",
+      "text": "Deploy to production with monitoring and documentation."
+    }
+  ]
+}

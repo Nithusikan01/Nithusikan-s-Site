@@ -1,0 +1,138 @@
+[
+  {
+    "role": "AI Engineer (Freelance)",
+    "company": "IN4M Solutions Ltd",
+    "location": "United Kingdom · Remote",
+    "start": "Aug 2026",
+    "end": "Present",
+    "current": true,
+    "logo": "",
+    "highlights": [
+      {
+        "value": "26% → 60%",
+        "label": "clinical checklist coverage"
+      },
+      {
+        "value": "5/8 → 8/8",
+        "label": "real test cases passing"
+      },
+      {
+        "value": "−55%",
+        "label": "reasoning tokens"
+      }
+    ],
+    "bullets": [
+      "Built a multi-stage speech-to-text and LLM pipeline (gpt-4o-transcribe, GPT-4o) that converts clinical consultations into structured documentation, raising clinical checklist coverage from 26% to 60% and cutting critical \"must-not\" errors to zero.",
+      "Re-engineered an LLM document-generation pipeline (gpt-oss-120b via Groq), raising real clinical test cases passing from 5/8 to 8/8 and reaching 10/10 on every accuracy check across repeated runs.",
+      "Cut reasoning tokens by 55% and replaced a second LLM call with deterministic code, keeping every request within strict rate limits, with automatic retry and clear error handling.",
+      "Implemented a fully local PII de-identification stage (OpenMed) so patient-identifiable data never reaches an external LLM; now working on multimodal extraction to structured JSON (Llama vision) and embedding-based retrieval with Amazon Bedrock."
+    ],
+    "tech": [
+      "Python",
+      "OpenAI API",
+      "Groq",
+      "gpt-oss",
+      "Llama (vision)",
+      "OpenMed",
+      "Amazon Bedrock",
+      "LLM Evaluation"
+    ]
+  },
+  {
+    "role": "Software Engineer",
+    "company": "Nanthi Ventures Inc.",
+    "location": "Remote (Ontario, Canada) · Contract",
+    "start": "Jan 2026",
+    "end": "May 2026",
+    "current": false,
+    "logo": "",
+    "highlights": [
+      {
+        "value": "Production",
+        "label": "accounting SaaS, paying customer"
+      },
+      {
+        "value": "End to end",
+        "label": "billing & invoicing"
+      },
+      {
+        "value": "3 paths",
+        "label": "wallet licensing assessed"
+      }
+    ],
+    "bullets": [],
+    "projects": [
+      {
+        "name": "Ledger Pro - multi-client accounting SaaS (production)",
+        "summary": "A lower-cost alternative to Xero and QuickBooks that lets accountants manage the books of multiple organisations from a single dashboard.",
+        "bullets": [
+          "Built React + TypeScript frontend features and developed billing and invoice management end to end on Django REST APIs and PostgreSQL.",
+          "Worked on-site with the first paying customer, turning their live feedback into UI changes so workflows matched the Xero experience they were moving from.",
+          "Integrated SendGrid and Twilio for inbound and outbound email: transactional notifications and processing of incoming customer email.",
+          "Took part in code reviews, testing and Docker-based deployments in an agile team."
+        ]
+      },
+      {
+        "name": "Product discovery - ride-hailing app with an integrated digital wallet",
+        "summary": "",
+        "bullets": [
+          "Interviewed three-wheel drivers and riders in Kilinochchi, Batticaloa and other districts to find out why PickMe and Uber still struggle to reach rural markets, and delivered a findings report to leadership.",
+          "Assessed the regulatory path under the Central Bank of Sri Lanka's Payment Cards and Mobile Payment Systems Regulations No. 1 of 2013: a licensed finance company (Rs. 2.5 billion minimum core capital), a non-bank operator licence (Rs. 150 million unimpaired capital), or a bank partnership holding all customer funds in a custodian account.",
+          "Mapped CBSL wallet limits (Rs. 150,000 enhanced-KYC, Rs. 20,000 basic) against ride-payment use cases; the analysis informed leadership's decision to pause development until a viable banking partnership was in place."
+        ]
+      }
+    ],
+    "tech": [
+      "Python",
+      "Django",
+      "PostgreSQL",
+      "REST APIs",
+      "React",
+      "TypeScript",
+      "SendGrid",
+      "Twilio",
+      "Docker",
+      "Product Discovery",
+      "Regulatory Analysis"
+    ]
+  },
+  {
+    "role": "Data Science Intern",
+    "company": "LIRNEasia",
+    "location": "Colombo, Sri Lanka",
+    "start": "Jul 2024",
+    "end": "Jan 2025",
+    "current": false,
+    "logo": "",
+    "highlights": [
+      {
+        "value": "~30% → ~70%",
+        "label": "recall"
+      },
+      {
+        "value": "~90%",
+        "label": "precision held"
+      },
+      {
+        "value": "~100K",
+        "label": "multilingual tweets"
+      }
+    ],
+    "bullets": [
+      "Built an end-to-end NLP and ML pipeline on ~100K multilingual tweets (English, Tamil, Sinhala) to predict virality, combining TF-IDF text representations with tweet content features, tweet metadata and user metadata.",
+      "Raised recall from ~30% to ~70% while keeping precision around 90%, handling class imbalance with model-level class weighting (class_weight=\"balanced\" in Random Forest, scale_pos_weight in XGBoost) rather than resampling; Random Forest and XGBoost performed best.",
+      "Benchmarked Logistic Regression, Random Forest, Gradient Boosting and XGBoost with TF-IDF, Word2Vec, FastText and VADER features, with experiments tracked in MLflow and data versioned with DVC.",
+      "Built data collection pipelines with Scrapy and Selenium, and ran hashtag network analysis with NetworkX and Neo4j."
+    ],
+    "tech": [
+      "Python",
+      "Scikit-learn",
+      "XGBoost",
+      "MLflow",
+      "DVC",
+      "NetworkX",
+      "Neo4j",
+      "Scrapy"
+    ]
+  }
+]
