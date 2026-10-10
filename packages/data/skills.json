@@ -68,21 +68,7 @@
     ]
   },
   {
-    "group": "Data",
-    "items": [
-      "PySpark",
-      "Pandas",
-      "NumPy",
-      "SQL",
-      "PostgreSQL",
-      "MySQL",
-      "Neo4j",
-      "Scrapy",
-      "Selenium"
-    ]
-  },
-  {
-    "group": "Languages",
+    "group": "Data & Languages",
     "items": [
       "Python",
       "Java",
@@ -90,7 +76,15 @@
       "JavaScript",
       "TypeScript",
       "C",
-      "Dart"
+      "Dart",
+      "PySpark",
+      "Pandas",
+      "NumPy",
+      "PostgreSQL",
+      "MySQL",
+      "Neo4j",
+      "Scrapy",
+      "Selenium"
     ]
   }
 ]

@@ -6,6 +6,11 @@
     "start": "Aug 2026",
     "end": "Present",
     "current": true,
+    "summary": "Production LLM features for UK clinical documentation",
+    "headline": {
+      "value": "26% → 60%",
+      "label": "checklist coverage"
+    },
     "logo": "",
     "highlights": [
       {
@@ -45,6 +50,11 @@
     "start": "Jan 2026",
     "end": "May 2026",
     "current": false,
+    "summary": "Ledger Pro accounting SaaS in production · ride-hailing wallet discovery",
+    "headline": {
+      "value": "End to end",
+      "label": "billing & invoicing"
+    },
     "logo": "",
     "highlights": [
       {
@@ -103,6 +113,11 @@
     "start": "Jul 2024",
     "end": "Jan 2025",
     "current": false,
+    "summary": "Multilingual tweet virality prediction on ~100K tweets",
+    "headline": {
+      "value": "~30% → ~70%",
+      "label": "recall at ~90% precision"
+    },
     "logo": "",
     "highlights": [
       {

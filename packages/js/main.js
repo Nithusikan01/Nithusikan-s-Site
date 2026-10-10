@@ -105,7 +105,7 @@ const motionObserver =
         (entries) => {
           entries.forEach((entry) => {
             const el = entry.target;
-            if (el.classList.contains("pipeline")) {
+            if (el.classList.contains("pipeline-steps")) {
               // The pulse only runs while the panel is on screen
               el.classList.toggle("is-running", entry.isIntersecting);
               return;
@@ -121,7 +121,7 @@ const motionObserver =
     : null;
 
 function observeMotion(root = document) {
-  const targets = $$("[data-count]:not([data-observed]), .chart:not([data-observed]), .pipeline:not([data-observed])", root);
+  const targets = $$("[data-count]:not([data-observed]), .chart:not([data-observed]), .pipeline-steps:not([data-observed])", root);
   targets.forEach((el) => {
     el.setAttribute("data-observed", "");
     if (motionObserver) motionObserver.observe(el);
@@ -139,11 +139,155 @@ function renderJobProject(proj) {
     </div>`;
 }
 
+/*==================== DISCLOSURE ("Show details") ====================*/
+// Long text sits behind a toggle so the page stays skimmable; the summary (tiles, metrics) stays visible
+let disclosureCount = 0;
+function disclosure(content, { show = "Show details", hide = "Hide details", buttonAfter = false } = {}) {
+  if (!content.trim()) return "";
+  const id = `details-${++disclosureCount}`;
+  const button = `
+    <button type="button" class="disclosure" aria-expanded="false" aria-controls="${id}" data-show="${escapeHTML(show)}" data-hide="${escapeHTML(hide)}">
+      <span class="disclosure__label">${escapeHTML(show)}</span>${icon("chevron-down")}
+    </button>`;
+  const panel = `<div class="disclosure__panel" id="${id}" hidden>${content}</div>`;
+  // buttonAfter: revealed text continues straight on from the preview, with the toggle below it
+  return buttonAfter ? panel + button : button + panel;
+}
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".disclosure");
+  if (!btn || btn.classList.contains("clamp-toggle")) return;
+  const panel = document.getElementById(btn.getAttribute("aria-controls"));
+  const open = btn.getAttribute("aria-expanded") === "true";
+  btn.setAttribute("aria-expanded", String(!open));
+  $(".disclosure__label", btn).textContent = open ? btn.dataset.show : btn.dataset.hide;
+  panel.hidden = open;
+  if (open) {
+    // Collapsing a long panel: keep its card in view instead of leaving the reader far below
+    const target = btn.closest(".card") || btn;
+    if (target.getBoundingClientRect().top < 0) target.scrollIntoView({ block: target === btn ? "center" : "start" });
+  }
+});
+
+// Job details render in full inside a "clamp": collapsed, it shows the first bullet and fades
+// the start of the next one out under a "Show more" button; expanded, it grows to full height.
+function jobDetails(job) {
+  return clampBlock(bulletList(job.bullets) + (job.projects || []).map(renderJobProject).join("") + chips(job.tech));
+}
+
+// Shared by experience and projects: full content, collapsed to the first bullet plus a faded peek
+function clampBlock(content) {
+  if (!content.trim()) return "";
+  const id = `clamp-${++disclosureCount}`;
+  return `
+    <div class="clamp is-clamped" id="${id}">${content}</div>
+    <button type="button" class="disclosure clamp-toggle" aria-expanded="false" aria-controls="${id}" data-show="Show more" data-hide="Show less">
+      <span class="disclosure__label">Show more</span>${icon("chevron-down")}
+    </button>`;
+}
+
+const CLAMP_PEEK = 64; // default px of the next item left visible (and faded) below the anchor
+
+// Collapsed height = bottom of the anchor (default: the first bullet; data-anchor overrides) plus a
+// peek of what follows. Re-measured on resize (first shown, window resized, a card inside expands).
+function fitClamp(el) {
+  if (!el || !el.classList.contains("is-clamped")) return;
+  const btn = document.querySelector(`[aria-controls="${el.id}"]`);
+  if (el.dataset.peekOnly) {
+    // Nothing shown in full: just a fixed-height peek of the content under the fade
+    if (!el.offsetParent) return;
+    const peekHeight = Number(el.dataset.peekOnly);
+    if (el.scrollHeight <= peekHeight + 48) return releaseClamp(el, btn);
+    el.style.maxHeight = `${peekHeight}px`;
+    if (btn) btn.hidden = false;
+    return;
+  }
+  const anchor = el.dataset.anchor ? el.querySelector(el.dataset.anchor) : el.querySelector(".bullets li");
+  if (!anchor || !el.offsetParent) {
+    // Nothing worth collapsing (e.g. two or fewer projects): show everything
+    if (el.dataset.anchor && !anchor) releaseClamp(el, btn);
+    return;
+  }
+  const peek = Number(el.dataset.peek) || CLAMP_PEEK;
+  const height = Math.ceil(anchor.getBoundingClientRect().bottom - el.getBoundingClientRect().top + peek);
+  if (el.scrollHeight <= height + 48) {
+    // Less than ~2 lines would be hidden: show it all, no fade, no button
+    releaseClamp(el, btn);
+    return;
+  }
+  el.style.maxHeight = `${height}px`;
+  if (btn) btn.hidden = false;
+}
+
+function releaseClamp(el, btn) {
+  el.classList.remove("is-clamped");
+  el.style.maxHeight = "";
+  setClampHidden(el, false);
+  if (btn) btn.hidden = true;
+}
+
+// Content fully below the fold of a collapsed clamp is taken out of tab order and the a11y tree
+function setClampHidden(el, hidden) {
+  $$("[data-clamp-hide]", el).forEach((node) => {
+    node.inert = hidden;
+    if (hidden) node.setAttribute("aria-hidden", "true");
+    else node.removeAttribute("aria-hidden");
+  });
+}
+
+const clampObserver =
+  "ResizeObserver" in window
+    ? new ResizeObserver((entries) => entries.forEach((e) => fitClamp(e.target.closest(".clamp"))))
+    : null;
+
+function setupClamps(root = document) {
+  $$(".clamp:not([data-clamp])", root).forEach((el) => {
+    el.setAttribute("data-clamp", "");
+    if (clampObserver) {
+      clampObserver.observe(el);
+      // An anchored clamp's height is capped, so also watch its content for growth (a card expanding)
+      if (el.dataset.anchor && el.firstElementChild) clampObserver.observe(el.firstElementChild);
+    }
+    if (el.classList.contains("is-clamped")) setClampHidden(el, true);
+    fitClamp(el);
+  });
+}
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".clamp-toggle");
+  if (!btn) return;
+  const el = document.getElementById(btn.getAttribute("aria-controls"));
+  const open = btn.getAttribute("aria-expanded") === "true";
+  btn.setAttribute("aria-expanded", String(!open));
+  $(".disclosure__label", btn).textContent = open ? btn.dataset.show : btn.dataset.hide;
+
+  if (!open) {
+    // Expand: animate to the full height, then release the cap so content can reflow freely
+    setClampHidden(el, false);
+    el.style.maxHeight = `${el.scrollHeight}px`;
+    el.classList.remove("is-clamped");
+    const release = (ev) => {
+      if (ev && (ev.target !== el || ev.propertyName !== "max-height")) return; // ignore bubbling from children
+      el.removeEventListener("transitionend", release);
+      if (btn.getAttribute("aria-expanded") === "true") el.style.maxHeight = "none";
+    };
+    if (reducedMotion) release();
+    else el.addEventListener("transitionend", release);
+  } else {
+    // Collapse: pin the current height first so the transition has a start value
+    el.style.maxHeight = `${el.scrollHeight}px`;
+    void el.offsetHeight;
+    el.classList.add("is-clamped");
+    setClampHidden(el, true);
+    fitClamp(el);
+    const target = btn.closest(".card") || el;
+    if (target.getBoundingClientRect().top < 0) target.scrollIntoView({ block: "start" });
+  }
+});
+
 function renderExperience(jobs) {
   const list = $("#experience-list");
-  list.innerHTML = jobs
-    .map(
-      (job) => `
+  const jobCard = (job) => `
       <article class="card job reveal">
         <div class="job__side">
           <p class="meta">${escapeHTML(job.start)} - ${escapeHTML(job.end)}</p>
@@ -154,14 +298,54 @@ function renderExperience(jobs) {
         </div>
         <div class="job__body">
           ${tiles(job.highlights)}
-          ${bulletList(job.bullets)}
-          ${(job.projects || []).map(renderJobProject).join("")}
-          ${chips(job.tech)}
+          ${jobDetails(job)}
         </div>
-      </article>`
-    )
-    .join("");
-  observeReveal(list);
+      </article>`;
+
+  $("#experience-count").textContent = `(${jobs.length})`;
+
+  // Current role(s) as full cards; earlier roles as compact rows that open in place
+  const current = jobs.filter((j) => j.current);
+  const shown = current.length ? current : jobs.slice(0, 1);
+  const earlier = jobs.filter((j) => !shown.includes(j));
+  list.innerHTML = shown.map(jobCard).join("");
+
+  if (earlier.length) {
+    $("#experience-previous-list").innerHTML = earlier
+      .map((job) => {
+        const id = `prev-${++disclosureCount}`;
+        const headline = job.headline || (job.highlights || [])[0];
+        return `
+        <li class="prev reveal" data-clamp-hide>
+          <div class="prev__row">
+            <p class="prev__dates meta">${escapeHTML(job.start)} - ${escapeHTML(job.end)}</p>
+            <div class="prev__main">
+              <h3 class="prev__role">${escapeHTML(job.role)} <span>· ${escapeHTML(job.company)}</span></h3>
+              ${present(job.summary) ? `<p class="prev__summary">${escapeHTML(job.summary)}</p>` : ""}
+            </div>
+            ${headline ? `<p class="prev__result"><span class="mono">${escapeHTML(headline.value)}</span> <span>${escapeHTML(headline.label)}</span></p>` : ""}
+            <button type="button" class="disclosure prev__toggle" aria-expanded="false" aria-controls="${id}" data-show="Details" data-hide="Hide"
+                    aria-label="${escapeHTML(`Details: ${job.role}, ${job.company}`)}">
+              <span class="disclosure__label">Details</span>${icon("chevron-down")}
+            </button>
+          </div>
+          <div class="disclosure__panel prev__details" id="${id}" hidden>
+            <p class="job__loc">${escapeHTML(job.location)}</p>
+            ${tiles(job.highlights)}
+            ${bulletList(job.bullets)}
+            ${(job.projects || []).map(renderJobProject).join("")}
+            ${chips(job.tech)}
+          </div>
+        </li>`;
+      })
+      .join("");
+    $("#experience-previous").hidden = false;
+    const prevToggle = $("#previous-toggle");
+    prevToggle.dataset.show = `Show previous roles (${earlier.length})`;
+    $(".disclosure__label", prevToggle).textContent = prevToggle.dataset.show;
+  }
+  observeReveal($("#experience"));
+  setupClamps($("#experience"));
 }
 
 /*==================== PROJECTS ====================*/
@@ -180,15 +364,11 @@ function linkList(p) {
     .join("");
 }
 
-function renderPipeline(p) {
-  const fig = $("#pipeline");
-  if (!fig || !p.pipeline) return;
-  fig.innerHTML = `
-    <figcaption class="pipeline__cap">
-      <span class="meta">${escapeHTML(p.title.split(" - ")[0])} · production RAG pipeline</span>
-      <span class="pipeline__live">Live on AWS</span>
-    </figcaption>
-    <ol class="pipeline__steps">
+// The featured project's pipeline, as a row of stages (a signal pulses through them on screen)
+function pipelineSteps(p) {
+  if (!p.pipeline || !p.pipeline.length) return "";
+  return `
+    <ol class="pipeline-steps" aria-label="${escapeHTML(`${p.title.split(" - ")[0]} pipeline`)}">
       ${p.pipeline
         .map(
           (s, i) => `
@@ -198,13 +378,7 @@ function renderPipeline(p) {
         </li>`
         )
         .join("")}
-    </ol>
-    <ul class="metric-strip">
-      ${(p.pipelineMetrics || [])
-        .map((m) => `<li><p class="metric-strip__value" data-count>${escapeHTML(m.value)}</p><p class="metric-strip__label">${escapeHTML(m.label)}</p></li>`)
-        .join("")}
-    </ul>`;
-  fig.hidden = false;
+    </ol>`;
 }
 
 function renderChart(ev) {
@@ -238,21 +412,26 @@ function renderFeatured(p) {
       : "";
   $("#project-hero").innerHTML = `
     <article class="card feature reveal">
-      <div class="feature__body">
-        <div>
-          <p class="meta">${escapeHTML(p.category || "Featured")} · ${escapeHTML(p.period)}</p>
+      <div class="feature__head">
+        <div class="feature__intro">
+          <p class="meta">${escapeHTML([p.category || "Featured", p.status, p.period].filter(present).join(" · "))}</p>
           <h3 class="feature__title">${escapeHTML(p.title)}</h3>
           <p class="feature__tagline">${escapeHTML(p.tagline)}</p>
         </div>
-        ${bulletList(p.bullets)}
-        ${chips(p.tech)}
         <div class="actions">
           ${button(links.live, "Live demo", "btn--primary", "external")}
           ${button(links.github, codeLabel(links.github || ""), "btn--ghost", "github")}
-          ${button(links.architecture, "Architecture diagram", "btn--ghost", "")}
+          ${button(links.architecture, "Architecture", "btn--ghost", "")}
         </div>
       </div>
-      ${renderChart(p.evaluation)}
+      ${pipelineSteps(p)}
+      <div class="feature__cols">
+        <div class="feature__body">
+          ${clampBlock(bulletList(p.bullets))}
+          ${chips(p.tech)}
+        </div>
+        ${renderChart(p.evaluation)}
+      </div>
     </article>`;
 }
 
@@ -274,71 +453,102 @@ function screenStrip(p) {
     </div>`;
 }
 
-function renderProjectCard(p, mini = false) {
+function renderProjectCard(p, mini = false, collapsible = false) {
   const metrics = (p.metrics || []).length
     ? `<ul class="pcard__metrics">${p.metrics
         .map((m) => `<li><span class="mono">${escapeHTML(m.value)}</span> <span>${escapeHTML(m.label)}</span></li>`)
         .join("")}</ul>`
     : "";
   return `
-    <article class="card pcard${mini ? " pcard--mini" : " reveal"}">
+    <article class="card pcard${mini ? " pcard--mini" : " reveal"}"${collapsible ? " data-clamp-hide" : ""}>
       <p class="meta">${escapeHTML([p.category, p.period].filter(Boolean).join(" · "))}</p>
       <h3 class="pcard__title">${escapeHTML(p.title)}</h3>
       <p class="pcard__desc">${escapeHTML(p.tagline)}</p>
       ${mini ? "" : metrics}
+      ${mini ? "" : clampBlock(bulletList(p.bullets))}
       ${mini ? "" : screenStrip(p)}
       ${chips(p.tech)}
       <div class="pcard__links">${linkList(p)}</div>
     </article>`;
 }
 
+const VISIBLE_PROJECTS = 0; // under "All", only the featured project shows in full
+const FILTER_LABELS = { all: "all", ai: "AI & ML", web: "web & mobile", research: "research" };
+
 function renderProjects(projects) {
   const hero = projects.find((p) => p.tier === "featured-hero");
   const featured = projects.filter((p) => p.tier === "featured");
   const more = projects.filter((p) => p.tier === "more");
 
-  if (hero) {
-    renderFeatured(hero);
-    renderPipeline(hero);
-  }
-  $("#project-grid").innerHTML = featured.map((p) => renderProjectCard(p)).join("");
+  $("#projects-count").textContent = `(${projects.length})`;
+  if (hero) renderFeatured(hero);
 
-  const toggle = $("#more-toggle");
-  const moreList = $("#project-more");
-  if (more.length) {
-    $("#more-line").textContent = `Also: ${more.map((p) => p.title).join(" · ")}.`;
-    moreList.innerHTML = more.map((p) => renderProjectCard(p, true)).join("");
-    toggle.hidden = false;
-    toggle.addEventListener("click", () => {
-      const open = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!open));
-      moreList.hidden = open;
-      toggle.firstChild.textContent = open ? "Show all projects " : "Show fewer projects ";
-    });
-  }
-  observeReveal($("#home"));
+  const apply = (filter) => renderProjectList({ hero, featured, more, filter });
+  $$("#project-filters .filter").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      $$("#project-filters .filter").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      apply(btn.dataset.filter);
+    })
+  );
+  apply("all");
   observeReveal($("#projects"));
+}
+
+// "All": two cards plus a faded peek and "Show N more". A filter: every match, nothing collapsed.
+function renderProjectList({ hero, featured, more, filter }) {
+  const matches = (p) => filter === "all" || (p.kinds || []).includes(filter);
+  const shownFeatured = featured.filter(matches);
+  const shownMore = more.filter(matches);
+  const clampEl = $("#projects-clamp");
+  const toggle = $("#projects-toggle");
+  const collapse = filter === "all";
+
+  $("#project-hero").hidden = !(hero && matches(hero));
+  $("#project-grid").innerHTML = shownFeatured.map((p, i) => renderProjectCard(p, false, collapse && i >= VISIBLE_PROJECTS)).join("");
+  $("#project-more").innerHTML = shownMore.map((p) => renderProjectCard(p, true)).join("");
+  $("#more-wrap").hidden = !shownMore.length;
+
+  // Reset the list's collapsed state for this view
+  toggle.setAttribute("aria-expanded", "false");
+  clampEl.style.maxHeight = "";
+  if (collapse) {
+    const hiddenCount = Math.max(0, shownFeatured.length - VISIBLE_PROJECTS) + shownMore.length;
+    toggle.dataset.show = `Show ${hiddenCount} more project${hiddenCount === 1 ? "" : "s"}`;
+    $(".disclosure__label", toggle).textContent = toggle.dataset.show;
+    clampEl.classList.add("is-clamped");
+    setClampHidden(clampEl, true);
+  } else {
+    releaseClamp(clampEl, toggle);
+  }
+
+  const count = shownFeatured.length + shownMore.length + ($("#project-hero").hidden ? 0 : 1);
+  $("#filter-status").textContent =
+    filter === "all" ? `Showing all ${count} projects` : `Showing ${count} ${FILTER_LABELS[filter]} project${count === 1 ? "" : "s"}`;
+
+  observeReveal($("#projects"));
+  setupClamps($("#projects"));
+  if (collapse) fitClamp(clampEl);
 }
 
 /*==================== SERVICES ====================*/
 function renderServices({ services = [], process = [] }) {
+  // Compact numbered list: title + one line each
   $("#services-grid").innerHTML = services
     .map(
       (s, i) => `
-      <article class="service">
-        <p class="service__n mono">${String(i + 1).padStart(2, "0")}</p>
-        <h3 class="service__title">${escapeHTML(s.title)}</h3>
-        <p class="service__summary">${escapeHTML(s.summary)}</p>
-        ${s.proof ? `<p class="service__proof">Proof: <a href="${escapeHTML(s.proof.href)}">${escapeHTML(s.proof.text)}</a></p>` : ""}
-      </article>`
+      <li class="service">
+        <span class="service__n mono" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+        <div>
+          <h3 class="service__title">${escapeHTML(s.title)}</h3>
+          <p class="service__summary">${escapeHTML(s.summary)}</p>
+        </div>
+      </li>`
     )
     .join("");
 
+  // "How I work" as a small vertical timeline
   $("#process-list").innerHTML = process
-    .map(
-      (p, i) =>
-        `<li class="reveal"><p class="process__step"><span class="mono">${i + 1} · </span>${escapeHTML(p.step)}</p><p class="process__text">${escapeHTML(p.text)}</p></li>`
-    )
+    .map((p) => `<li><p class="process__step">${escapeHTML(p.step)}</p><p class="process__text">${escapeHTML(p.text)}</p></li>`)
     .join("");
   observeReveal($("#services"));
 }
@@ -349,7 +559,7 @@ function renderSkills(groups) {
   grid.innerHTML = groups
     .map(
       (g) => `
-      <div class="stack__row reveal">
+      <div class="stack__box reveal">
         <h3 class="stack__group">${escapeHTML(g.group)}</h3>
         ${chips(g.items)}
       </div>`
@@ -359,25 +569,37 @@ function renderSkills(groups) {
 }
 
 /*==================== EDUCATION ====================*/
+// Degree with its photo side by side; earlier education as short lines underneath
 function renderEducation(entries) {
-  $("#education-list").innerHTML = entries
-    .map(
-      (e) => `
-      <li>
-        ${
-          e.photo && present(e.photo.src)
-            ? `<figure class="edu__photo">
-          <img src="${escapeHTML(e.photo.src)}" alt="${escapeHTML(e.photo.alt)}" width="${e.photo.width || 1200}" height="${e.photo.height || 840}" loading="lazy">
-          ${present(e.photo.caption) ? `<figcaption>${escapeHTML(e.photo.caption)}</figcaption>` : ""}
-        </figure>`
-            : ""
-        }
-        <p class="edu__title">${escapeHTML(e.title)}</p>
-        <p class="edu__sub">${withBreaks(e.subtitle).replace(/<br>/g, " · ")}</p>
-        <p class="edu__date meta">${escapeHTML(e.date)}</p>
-      </li>`
-    )
-    .join("");
+  const [degree, ...earlier] = entries;
+  if (!degree) return;
+  const sub = (e) => withBreaks(e.subtitle).replace(/<br>/g, " · ");
+  const photo = degree.photo && present(degree.photo.src) ? degree.photo : null;
+  $("#education-card").innerHTML = `
+    ${
+      photo
+        ? `<figure class="edu__photo">
+        <img src="${escapeHTML(photo.src)}" alt="${escapeHTML(photo.alt)}" width="${photo.width || 1200}" height="${photo.height || 840}" loading="lazy">
+        ${present(photo.caption) ? `<figcaption>${escapeHTML(photo.caption)}</figcaption>` : ""}
+      </figure>`
+        : ""
+    }
+    <div class="edu__main">
+      <p class="panel__label mono">Education</p>
+      <p class="edu__title">${escapeHTML(degree.title)}</p>
+      <p class="edu__sub">${sub(degree)}</p>
+      <p class="edu__date meta">${escapeHTML(degree.date)}</p>
+      ${
+        earlier.length
+          ? `<ul class="edu__earlier">${earlier
+              .map(
+                (e) =>
+                  `<li><span class="edu__earlier-title">${escapeHTML(e.title)}</span> <span class="edu__earlier-sub">${sub(e)}</span> <span class="meta">${escapeHTML(e.date)}</span></li>`
+              )
+              .join("")}</ul>`
+          : ""
+      }
+    </div>`;
 }
 
 /*==================== CERTIFICATIONS ====================*/
@@ -389,15 +611,26 @@ function renderCertifications({ certifications = [], achievements = [] }) {
     )
     .join("");
 
-  $("#cert-grid").innerHTML = certifications
-    .map((c) => {
-      const title = present(c.link)
-        ? `<a href="${escapeHTML(c.link)}"${extAttrs(c.link)}>${escapeHTML(c.title)}<span class="sr-only">${newTab(c.link)}</span></a>`
-        : escapeHTML(c.title);
-      const year = present(c.year) ? `, ${escapeHTML(c.year)}` : "";
-      return `<li>${title} <span class="certs__issuer">- ${escapeHTML(c.issuer)}${year}</span></li>`;
-    })
-    .join("");
+  const certItem = (c) => {
+    const title = present(c.link)
+      ? `<a href="${escapeHTML(c.link)}"${extAttrs(c.link)}>${escapeHTML(c.title)}<span class="sr-only">${newTab(c.link)}</span></a>`
+      : escapeHTML(c.title);
+    const year = present(c.year) ? `, ${escapeHTML(c.year)}` : "";
+    return `<li>${title} <span class="certs__issuer">- ${escapeHTML(c.issuer)}${year}</span></li>`;
+  };
+  // First three always visible; the rest behind "Show all"
+  const shown = certifications.slice(0, 3);
+  const rest = certifications.slice(3);
+  $("#cert-grid").innerHTML = shown.map(certItem).join("");
+  if (rest.length) {
+    $("#cert-grid").insertAdjacentHTML(
+      "afterend",
+      disclosure(`<ul class="certs">${rest.map(certItem).join("")}</ul>`, {
+        show: `Show all certificates (${certifications.length})`,
+        hide: "Show fewer",
+      })
+    );
+  }
 }
 
 /*==================== LOAD DATA ====================*/
@@ -407,7 +640,7 @@ const DATA = "packages/data/";
   ["projects.json", renderProjects, "#project-grid", "projects"],
   ["services.json", renderServices, "#services-grid", "services"],
   ["skills.json", renderSkills, "#skills-grid", "skills"],
-  ["qualifications.json", renderEducation, "#education-list", "education"],
+  ["qualifications.json", renderEducation, "#education-card", "education"],
   ["certifications.json", renderCertifications, "#cert-grid", "certifications"],
 ].forEach(([file, render, target, label]) => {
   loadJSON(DATA + file)

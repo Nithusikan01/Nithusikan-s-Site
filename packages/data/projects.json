@@ -69,6 +69,7 @@
       "architecture": "packages/images/projects/anamnesis-architecture.svg"
     },
     "category": "Featured",
+    "status": "In production on AWS",
     "pipeline": [
       {
         "stage": "Input",
@@ -133,7 +134,11 @@
           "value": 0.98
         }
       ]
-    }
+    },
+    "kinds": [
+      "ai",
+      "web"
+    ]
   },
   {
     "id": "cyberattack-detection",
@@ -168,87 +173,11 @@
       "live": "",
       "github": "https://github.com/cepdnaclk/e19-4yp-Predicting-Cybersecurity-Attacks-Using-Compound-Analysis-with-Classification-Algorithms"
     },
-    "category": "Final year project"
-  },
-  {
-    "id": "anpr",
-    "title": "Vehicle Number Plate Recognition System",
-    "tagline": "Real-time ANPR for Sri Lankan vehicles using a two-stage deep learning pipeline.",
-    "period": "2024",
-    "tier": "featured",
-    "image": "packages/images/projects/anpr.svg",
-    "imageAlt": "Pipeline diagram: video frame, YOLOv8 vehicle detection, YOLOv8 plate localization, EasyOCR, rule-based correction, plate text",
-    "metrics": [],
-    "bullets": [
-      "Fine-tuned separate YOLOv8 models for vehicle detection and plate localization on locally curated datasets, including vehicle classes absent from standard benchmarks.",
-      "Integrated EasyOCR with rule-based post-processing and character correction for robust recognition."
-    ],
-    "tech": [
-      "Python",
-      "YOLOv8",
-      "PyTorch",
-      "OpenCV",
-      "EasyOCR"
-    ],
-    "links": {
-      "live": "",
-      "github": "https://github.com/Nithusikan01/Vehicle-Number-Plate-Recognition-System"
-    },
-    "category": "Computer vision"
-  },
-  {
-    "id": "support-chatbot",
-    "title": "Customer Support Chatbot with LLaMA-3",
-    "tagline": "A customer support chatbot combining a fine-tuned LLaMA-3 model with Retrieval-Augmented Generation.",
-    "period": "2024",
-    "tier": "featured",
-    "image": "packages/images/projects/support-chatbot.svg",
-    "imageAlt": "Pipeline diagram: customer question, retriever over support content, fine-tuned LLaMA-3, FastAPI, grounded answer",
-    "metrics": [],
-    "bullets": [
-      "Combined a fine-tuned LLaMA-3 model with RAG over support content for grounded answers.",
-      "TODO (owner): add one bullet with the fine-tuning approach (e.g. PEFT/LoRA), data, and any result."
-    ],
-    "tech": [
-      "Python",
-      "LLaMA-3",
-      "LangChain",
-      "RAG",
-      "PEFT",
-      "FAISS",
-      "ChromaDB",
-      "FastAPI"
-    ],
-    "links": {
-      "live": "",
-      "github": "https://github.com/Nithusikan01/Customer-Support-Chat-Bot-using-LLAMA-3"
-    },
-    "category": "LLM"
-  },
-  {
-    "id": "bed-demand-forecasting",
-    "title": "ML-Based Inpatient Bed Demand Forecasting",
-    "tagline": "Forecasting hospital inpatient bed demand to improve resource allocation.",
-    "period": "Nov 2023 – Apr 2024",
-    "tier": "featured",
-    "image": "packages/images/projects/bed-forecasting.webp",
-    "imageAlt": "Illustration of a hospital bed with a patient monitor",
-    "metrics": [],
-    "bullets": [
-      "Built a machine learning application that forecasts inpatient bed demand to support hospital capacity planning.",
-      "TODO (owner): add the model(s) used and an evaluation metric (e.g. MAE/MAPE)."
-    ],
-    "tech": [
-      "Python",
-      "Pandas",
-      "Scikit-learn"
-    ],
-    "links": {
-      "live": "",
-      "github": "https://github.com/Nithusikan01/ML-Based-Bed-Demand-Forecasting",
-      "paper": "https://www.researchgate.net/publication/391584272_Predicting_Inpatient_Bed_Demand_Using_Machine_Learning"
-    },
-    "category": "Healthcare ML · Published"
+    "category": "Final year project",
+    "kinds": [
+      "ai",
+      "research"
+    ]
   },
   {
     "id": "tr-ledger",
@@ -309,6 +238,99 @@
         "src": "packages/images/projects/tr-ledger/settings.webp",
         "alt": "Settings screen with currency, price code and reminder schedule"
       }
+    ],
+    "kinds": [
+      "web"
+    ]
+  },
+  {
+    "id": "anpr",
+    "title": "Vehicle Number Plate Recognition System",
+    "tagline": "Real-time ANPR for Sri Lankan vehicles using a two-stage deep learning pipeline.",
+    "period": "2024",
+    "tier": "featured",
+    "image": "packages/images/projects/anpr.svg",
+    "imageAlt": "Pipeline diagram: video frame, YOLOv8 vehicle detection, YOLOv8 plate localization, EasyOCR, rule-based correction, plate text",
+    "metrics": [],
+    "bullets": [
+      "Fine-tuned separate YOLOv8 models for vehicle detection and plate localization on locally curated datasets, including vehicle classes absent from standard benchmarks.",
+      "Integrated EasyOCR with rule-based post-processing and character correction for robust recognition."
+    ],
+    "tech": [
+      "Python",
+      "YOLOv8",
+      "PyTorch",
+      "OpenCV",
+      "EasyOCR"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/Vehicle-Number-Plate-Recognition-System"
+    },
+    "category": "Computer vision",
+    "kinds": [
+      "ai"
+    ]
+  },
+  {
+    "id": "support-chatbot",
+    "title": "Customer Support Chatbot with LLaMA-3",
+    "tagline": "A customer support chatbot combining a fine-tuned LLaMA-3 model with Retrieval-Augmented Generation.",
+    "period": "2024",
+    "tier": "featured",
+    "image": "packages/images/projects/support-chatbot.svg",
+    "imageAlt": "Pipeline diagram: customer question, retriever over support content, fine-tuned LLaMA-3, FastAPI, grounded answer",
+    "metrics": [],
+    "bullets": [
+      "Combined a fine-tuned LLaMA-3 model with RAG over support content for grounded answers.",
+      "TODO (owner): add one bullet with the fine-tuning approach (e.g. PEFT/LoRA), data, and any result."
+    ],
+    "tech": [
+      "Python",
+      "LLaMA-3",
+      "LangChain",
+      "RAG",
+      "PEFT",
+      "FAISS",
+      "ChromaDB",
+      "FastAPI"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/Customer-Support-Chat-Bot-using-LLAMA-3"
+    },
+    "category": "LLM",
+    "kinds": [
+      "ai"
+    ]
+  },
+  {
+    "id": "bed-demand-forecasting",
+    "title": "ML-Based Inpatient Bed Demand Forecasting",
+    "tagline": "Forecasting hospital inpatient bed demand to improve resource allocation.",
+    "period": "Nov 2023 – Apr 2024",
+    "tier": "featured",
+    "image": "packages/images/projects/bed-forecasting.webp",
+    "imageAlt": "Illustration of a hospital bed with a patient monitor",
+    "metrics": [],
+    "bullets": [
+      "Built a machine learning application that forecasts inpatient bed demand to support hospital capacity planning.",
+      "TODO (owner): add the model(s) used and an evaluation metric (e.g. MAE/MAPE)."
+    ],
+    "tech": [
+      "Python",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "links": {
+      "live": "",
+      "github": "https://github.com/Nithusikan01/ML-Based-Bed-Demand-Forecasting",
+      "paper": "https://www.researchgate.net/publication/391584272_Predicting_Inpatient_Bed_Demand_Using_Machine_Learning"
+    },
+    "category": "Healthcare ML · Published",
+    "kinds": [
+      "ai",
+      "research"
     ]
   },
   {
@@ -333,12 +355,15 @@
     "links": {
       "live": "https://eeu.pdn.ac.lk/",
       "github": "https://projects.ce.pdn.ac.lk/co227/e19/Engineering-Education-Unit/"
-    }
+    },
+    "kinds": [
+      "web"
+    ]
   },
   {
     "id": "hydroponics",
     "title": "IoT-Based Automated Hydroponic System",
-    "tagline": "Monitoring and controlling hydroponic growth conditions to cut resource use and support data-driven crop management.",
+    "tagline": "An IoT system with a mobile app and web dashboard for monitoring and controlling hydroponic growth conditions, cutting resource use and supporting data-driven crop management.",
     "period": "Sep 2023 – Jan 2024",
     "tier": "more",
     "image": "packages/images/projects/hydroponics.webp",
@@ -349,12 +374,17 @@
     ],
     "tech": [
       "IoT",
-      "AWS IoT Core"
+      "AWS IoT Core",
+      "Mobile app",
+      "Web dashboard"
     ],
     "links": {
       "live": "",
       "github": "https://projects.ce.pdn.ac.lk/3yp/e19/Automated-Hydroponic-System/"
-    }
+    },
+    "kinds": [
+      "web"
+    ]
   },
   {
     "id": "skymart",
@@ -373,7 +403,10 @@
     "links": {
       "live": "",
       "github": "https://github.com/cepdnaclk/e19-co226-Online-Grocery-Shop"
-    }
+    },
+    "kinds": [
+      "web"
+    ]
   },
   {
     "id": "attendance",
@@ -391,25 +424,9 @@
     "links": {
       "live": "",
       "github": "https://projects.ce.pdn.ac.lk/co225/e19/school-attendance-management-system/"
-    }
-  },
-  {
-    "id": "cpu",
-    "title": "8-bit Single Cycle Processor",
-    "tagline": "An 8-bit single-cycle CPU with ALU, register file, control logic, forwarding unit, and data/instruction caches.",
-    "period": "Mar 2023 – Jun 2023",
-    "tier": "more",
-    "image": "packages/images/projects/cpu.webp",
-    "imageAlt": "Illustration of a processor chip on a circuit board",
-    "metrics": [],
-    "bullets": [],
-    "tech": [
-      "Verilog",
-      "Computer Architecture"
-    ],
-    "links": {
-      "live": "",
-      "github": ""
-    }
+    },
+    "kinds": [
+      "web"
+    ]
   }
 ]

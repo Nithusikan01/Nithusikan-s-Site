@@ -30,8 +30,8 @@
     },
     {
       "icon": "gauge",
-      "title": "Prompt Optimization & LLM Evaluation",
-      "summary": "For AI features that work \"most of the time\" - I make them accurate, consistent and cheaper to run.",
+      "title": "Agentic AI & LLM Evaluation",
+      "summary": "AI agents and LLM features that are accurate, consistent and cheaper to run, backed by real test suites.",
       "bullets": [
         "Systematic evaluation with test cases and repeated-run accuracy checks",
         "Prompt and context engineering to cut tokens, latency and API cost",
